@@ -2,11 +2,13 @@
 
 Usage:
   python3 -u setup/run_fabric_notebook.py <local_file.py> <notebook_name> [--lakehouse NAME] [--no-run]
+                                          [--param name=value ...]
 
 Cells: the file is split into notebook cells at lines starting with "# %%".
        "# %% [parameters]" marks the parameters cell a pipeline can override.
 --lakehouse: attach that lakehouse as the notebook's default (needed for Spark SQL table names).
 --no-run:    upload only (for notebooks that are only ever called with %run, like 00_config).
+--param:     override a parameters-cell value for this run (repeatable).
 
 Auth: borrows a short-lived Entra token from `az` for each call; nothing is saved.
 Idempotent: creates the notebook if missing, otherwise replaces its content.
@@ -93,8 +95,11 @@ def find(items, name):
     return next((i for i in items if i["displayName"] == name), None)
 
 
-def run(ws, nb_id):
-    status, headers, _ = call("POST", f"/workspaces/{ws}/items/{nb_id}/jobs/instances?jobType=RunNotebook")
+def run(ws, nb_id, params=None):
+    body = None
+    if params:
+        body = {"executionData": {"parameters": {k: {"value": v, "type": "string"} for k, v in params.items()}}}
+    status, headers, _ = call("POST", f"/workspaces/{ws}/items/{nb_id}/jobs/instances?jobType=RunNotebook", body)
     job_url = headers["Location"]
     print("run started; Spark session start-up can take a few minutes")
     while True:
@@ -112,6 +117,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("local_file"); ap.add_argument("name")
     ap.add_argument("--lakehouse"); ap.add_argument("--no-run", action="store_true")
+    ap.add_argument("--param", action="append", default=[])
     args = ap.parse_args()
 
     source = open(args.local_file, encoding="utf-8").read()
@@ -135,7 +141,7 @@ def main():
         print(f"updated notebook {args.name} ({nb['id']})")
 
     if not args.no_run:
-        run(ws, nb["id"])
+        run(ws, nb["id"], dict(p.split("=", 1) for p in args.param))
 
 
 if __name__ == "__main__":

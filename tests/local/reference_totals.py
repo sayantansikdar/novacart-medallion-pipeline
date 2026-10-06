@@ -5,7 +5,8 @@ and the design-note assumptions, using Decimal with the same rounding as the pip
 (net_local and net_usd rounded half-up to 4 decimals per line). The gold tests compare
 the pipeline's totals with these numbers, so a bug in either shows up as a mismatch.
 
-Usage: python3 tests/local/reference_totals.py <folder with the input files>
+Usage: python3 tests/local/reference_totals.py <folder with the input files> [batches]
+       batches: "1" for the state right after batch 1, "1,2" (default) for both batches
 """
 import csv, json, re, sys
 from collections import defaultdict
@@ -13,6 +14,7 @@ from datetime import datetime, timezone, timedelta
 from decimal import Decimal, ROUND_HALF_UP
 
 SRC = sys.argv[1] if len(sys.argv) > 1 else "."
+BATCHES = [int(b) for b in (sys.argv[2] if len(sys.argv) > 2 else "1,2").split(",")]
 Q4 = Decimal("0.0001")
 REVENUE = {"paid", "shipped", "delivered"}
 COUNTRY_CCY = {"IN": "INR", "US": "USD", "GB": "GBP", "UK": "GBP", "DE": "EUR", "SG": "SGD"}
@@ -39,6 +41,8 @@ def jsonl(name):
 # ---- orders: latest updated_at wins across both batches
 orders = {}
 for b, f in ((1, "orders_batch_1.csv"), (2, "orders_batch_2.csv")):
+    if b not in BATCHES:
+        continue
     for r in rows(f):
         u = ts(r["updated_at"])
         cur = orders.get(r["order_id"])
@@ -50,6 +54,8 @@ for b, f in ((1, "orders_batch_1.csv"), (2, "orders_batch_2.csv")):
 # ---- items: later batch replaces a line; lines without an order are excluded
 items = {}
 for b, f in ((1, "order_items_batch_1_json.txt"), (2, "order_items_batch_2_jsonl.txt")):
+    if b not in BATCHES:
+        continue
     for r in jsonl(f):
         if r["order_id"] in orders:
             items[(r["order_id"], int(r["line_no"]))] = r
@@ -110,7 +116,13 @@ for oid, o in orders.items():
         mismatches += 1
 
 top = sorted(by_cust.items(), key=lambda kv: (-kv[1], kv[0]))[:10]
+status_mix = defaultdict(int)
+for o in orders.values():
+    status_mix[o["status"]] += 1
 print(json.dumps({
+    "batches": BATCHES,
+    "orders": len(orders),
+    "status_mix": dict(sorted(status_mix.items())),
     "fact_lines": fact_lines,
     "revenue_usd_total": str(sum(daily.values())),
     "revenue_days": len(daily),
