@@ -1,0 +1,251 @@
+{
+  "batch_id": 1,
+  "dq_report": [
+    {
+      "batch_id": 1,
+      "layer": "bronze",
+      "entity": "customers_changes",
+      "rule": "_TOTAL",
+      "rows_in": 194,
+      "rows_out": 194,
+      "rows_quarantined": 0,
+      "rows_deduped": 0,
+      "rows_inserted": null,
+      "rows_updated": null,
+      "recorded_at": "2026-10-06 11:44:25.549726"
+    },
+    {
+      "batch_id": 1,
+      "layer": "bronze",
+      "entity": "fx_rates",
+      "rule": "_TOTAL",
+      "rows_in": 84,
+      "rows_out": 84,
+      "rows_quarantined": 0,
+      "rows_deduped": 0,
+      "rows_inserted": null,
+      "rows_updated": null,
+      "recorded_at": "2026-10-06 11:44:47.559363"
+    },
+    {
+      "batch_id": 1,
+      "layer": "bronze",
+      "entity": "order_items",
+      "rule": "_TOTAL",
+      "rows_in": 1006,
+      "rows_out": 1006,
+      "rows_quarantined": 0,
+      "rows_deduped": 0,
+      "rows_inserted": null,
+      "rows_updated": null,
+      "recorded_at": "2026-10-06 11:44:12.122751"
+    },
+    {
+      "batch_id": 1,
+      "layer": "bronze",
+      "entity": "orders",
+      "rule": "_TOTAL",
+      "rows_in": 1418,
+      "rows_out": 1418,
+      "rows_quarantined": 0,
+      "rows_deduped": 0,
+      "rows_inserted": null,
+      "rows_updated": null,
+      "recorded_at": "2026-10-06 11:43:58.340839"
+    },
+    {
+      "batch_id": 1,
+      "layer": "bronze",
+      "entity": "payments",
+      "rule": "_TOTAL",
+      "rows_in": 1164,
+      "rows_out": 1164,
+      "rows_quarantined": 0,
+      "rows_deduped": 0,
+      "rows_inserted": null,
+      "rows_updated": null,
+      "recorded_at": "2026-10-06 11:44:58.438190"
+    },
+    {
+      "batch_id": 1,
+      "layer": "bronze",
+      "entity": "products",
+      "rule": "_TOTAL",
+      "rows_in": 40,
+      "rows_out": 40,
+      "rows_quarantined": 0,
+      "rows_deduped": 0,
+      "rows_inserted": null,
+      "rows_updated": null,
+      "recorded_at": "2026-10-06 11:44:36.591793"
+    },
+    {
+      "batch_id": 1,
+      "layer": "gold",
+      "entity": "fact_order_line",
+      "rule": "_TOTAL",
+      "rows_in": 971,
+      "rows_out": 971,
+      "rows_quarantined": 0,
+      "rows_deduped": 0,
+      "rows_inserted": null,
+      "rows_updated": null,
+      "recorded_at": "2026-10-06 11:54:17.992968"
+    },
+    {
+      "batch_id": 1,
+      "layer": "silver",
+      "entity": "dim_customer",
+      "rule": "UPDATED_AT_MISSING",
+      "rows_in": null,
+      "rows_out": null,
+      "rows_quarantined": 5,
+      "rows_deduped": null,
+      "rows_inserted": null,
+      "rows_updated": null,
+      "recorded_at": "2026-10-06 11:48:29.439422"
+    },
+    {
+      "batch_id": 1,
+      "layer": "silver",
+      "entity": "dim_customer",
+      "rule": "_TOTAL",
+      "rows_in": 194,
+      "rows_out": 166,
+      "rows_quarantined": 5,
+      "rows_deduped": 23,
+      "rows_inserted": 166,
+      "rows_updated": 0,
+      "recorded_at": "2026-10-06 11:48:29.439422"
+    },
+    {
+      "batch_id": 1,
+      "layer": "silver",
+      "entity": "fx_rates",
+      "rule": "_TOTAL",
+      "rows_in": 84,
+      "rows_out": 84,
+      "rows_quarantined": 0,
+      "rows_deduped": 0,
+      "rows_inserted": 84,
+      "rows_updated": 0,
+      "recorded_at": "2026-10-06 11:47:40.344344"
+    },
+    {
+      "batch_id": 1,
+      "layer": "silver",
+      "entity": "order_items",
+      "rule": "ORDER_NOT_FOUND",
+      "rows_in": null,
+      "rows_out": null,
+      "rows_quarantined": 10,
+      "rows_deduped": null,
+      "rows_inserted": null,
+      "rows_updated": null,
+      "recorded_at": "2026-10-06 11:51:51.828664"
+    },
+    {
+      "batch_id": 1,
+      "layer": "silver",
+      "entity": "order_items",
+      "rule": "_TOTAL",
+      "rows_in": 1006,
+      "rows_out": 971,
+      "rows_quarantined": 10,
+      "rows_deduped": 25,
+      "rows_inserted": 971,
+      "rows_updated": 0,
+      "recorded_at": "2026-10-06 11:51:51.828664"
+    },
+    {
+      "batch_id": 1,
+      "layer": "silver",
+      "entity": "orders",
+      "rule": "_TOTAL",
+      "rows_in": 1418,
+      "rows_out": 495,
+      "rows_quarantined": 0,
+      "rows_deduped": 923,
+      "rows_inserted": 495,
+      "rows_updated": 0,
+      "recorded_at": "2026-10-06 11:50:13.092283"
+    },
+    {
+      "batch_id": 1,
+      "layer": "silver",
+      "entity": "payments",
+      "rule": "_TOTAL",
+      "rows_in": 1164,
+      "rows_out": 1164,
+      "rows_quarantined": 0,
+      "rows_deduped": 0,
+      "rows_inserted": 1164,
+      "rows_updated": 0,
+      "recorded_at": "2026-10-06 11:48:04.759932"
+    },
+    {
+      "batch_id": 1,
+      "layer": "silver",
+      "entity": "products",
+      "rule": "_TOTAL",
+      "rows_in": 40,
+      "rows_out": 40,
+      "rows_quarantined": 0,
+      "rows_deduped": 0,
+      "rows_inserted": 40,
+      "rows_updated": 0,
+      "recorded_at": "2026-10-06 11:47:16.107201"
+    }
+  ],
+  "reconciliation": [
+    {
+      "batch_id": 1,
+      "check_name": "fact lines = silver order_items lines",
+      "value": "971",
+      "expected": "971",
+      "passed": true
+    },
+    {
+      "batch_id": 1,
+      "check_name": "daily_revenue total = fact revenue total",
+      "value": "150062.6435",
+      "expected": "150062.6435",
+      "passed": true
+    },
+    {
+      "batch_id": 1,
+      "check_name": "revenue_by_category total = fact revenue total",
+      "value": "150062.6435",
+      "expected": "150062.6435",
+      "passed": true
+    },
+    {
+      "batch_id": 1,
+      "check_name": "lines without an FX rate (fx_missing, excluded)",
+      "value": "0",
+      "expected": "0",
+      "passed": null
+    },
+    {
+      "batch_id": 1,
+      "check_name": "lines for customers not in the CRM (customer_sk = -1)",
+      "value": "18",
+      "expected": null,
+      "passed": null
+    },
+    {
+      "batch_id": 1,
+      "check_name": "payments whose order is unknown (excluded from mismatches)",
+      "value": "537",
+      "expected": null,
+      "passed": null
+    },
+    {
+      "batch_id": 1,
+      "check_name": "orders with a payment mismatch > 0.50 USD",
+      "value": "64",
+      "expected": null,
+      "passed": null
+    }
+  ]
+}

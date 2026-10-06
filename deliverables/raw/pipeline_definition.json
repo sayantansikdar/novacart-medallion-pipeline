@@ -1,0 +1,260 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "name": "setup",
+        "type": "TridentNotebook",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.01:00:00",
+          "retry": 2,
+          "retryIntervalInSeconds": 60,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "notebookId": "7b4d17fc-dd5d-4808-af0a-24db13c1c666",
+          "workspaceId": "bfb76aac-adf7-413d-9ca3-7d3f182f5960",
+          "parameters": {
+            "batch_id": {
+              "value": {
+                "value": "@pipeline().parameters.batch_id",
+                "type": "Expression"
+              },
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "bronze",
+        "type": "TridentNotebook",
+        "dependsOn": [
+          {
+            "activity": "setup",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.01:00:00",
+          "retry": 2,
+          "retryIntervalInSeconds": 60,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "notebookId": "7a58c1e8-bc3e-4eb5-8a13-4c990b0ac1a2",
+          "workspaceId": "bfb76aac-adf7-413d-9ca3-7d3f182f5960",
+          "parameters": {
+            "batch_id": {
+              "value": {
+                "value": "@pipeline().parameters.batch_id",
+                "type": "Expression"
+              },
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "silver_reference",
+        "type": "TridentNotebook",
+        "dependsOn": [
+          {
+            "activity": "bronze",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.01:00:00",
+          "retry": 2,
+          "retryIntervalInSeconds": 60,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "notebookId": "75c47a30-80f6-486e-89f6-188669fa1a9b",
+          "workspaceId": "bfb76aac-adf7-413d-9ca3-7d3f182f5960",
+          "parameters": {
+            "batch_id": {
+              "value": {
+                "value": "@pipeline().parameters.batch_id",
+                "type": "Expression"
+              },
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "silver_orders",
+        "type": "TridentNotebook",
+        "dependsOn": [
+          {
+            "activity": "silver_reference",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.01:00:00",
+          "retry": 2,
+          "retryIntervalInSeconds": 60,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "notebookId": "6e459945-823e-412e-9448-91149d133d71",
+          "workspaceId": "bfb76aac-adf7-413d-9ca3-7d3f182f5960",
+          "parameters": {
+            "batch_id": {
+              "value": {
+                "value": "@pipeline().parameters.batch_id",
+                "type": "Expression"
+              },
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "silver_items",
+        "type": "TridentNotebook",
+        "dependsOn": [
+          {
+            "activity": "silver_orders",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.01:00:00",
+          "retry": 2,
+          "retryIntervalInSeconds": 60,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "notebookId": "77b99e10-f8a2-49c8-8387-f15a44f64405",
+          "workspaceId": "bfb76aac-adf7-413d-9ca3-7d3f182f5960",
+          "parameters": {
+            "batch_id": {
+              "value": {
+                "value": "@pipeline().parameters.batch_id",
+                "type": "Expression"
+              },
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "gold",
+        "type": "TridentNotebook",
+        "dependsOn": [
+          {
+            "activity": "silver_items",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.01:00:00",
+          "retry": 2,
+          "retryIntervalInSeconds": 60,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "notebookId": "d34d8ca8-0787-45cc-80c3-4da9539bc001",
+          "workspaceId": "bfb76aac-adf7-413d-9ca3-7d3f182f5960",
+          "parameters": {
+            "batch_id": {
+              "value": {
+                "value": "@pipeline().parameters.batch_id",
+                "type": "Expression"
+              },
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "notify_failure",
+        "type": "TridentNotebook",
+        "dependsOn": [
+          {
+            "activity": "gold",
+            "dependencyConditions": [
+              "Failed",
+              "Skipped"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.01:00:00",
+          "retry": 1,
+          "retryIntervalInSeconds": 60,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "notebookId": "f07cbebb-cd57-4615-aca1-154cb744003a",
+          "workspaceId": "bfb76aac-adf7-413d-9ca3-7d3f182f5960",
+          "parameters": {
+            "batch_id": {
+              "value": {
+                "value": "@pipeline().parameters.batch_id",
+                "type": "Expression"
+              },
+              "type": "string"
+            },
+            "pipeline_run_id": {
+              "value": {
+                "value": "@pipeline().RunId",
+                "type": "Expression"
+              },
+              "type": "string"
+            },
+            "pipeline_name": {
+              "value": {
+                "value": "@pipeline().Pipeline",
+                "type": "Expression"
+              },
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "fail_run",
+        "type": "Fail",
+        "dependsOn": [
+          {
+            "activity": "notify_failure",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "typeProperties": {
+          "message": "NovaCart pipeline failed; see the failed step in Monitor. An alert was recorded by notify_failure.",
+          "errorCode": "NOVACART_PIPELINE_FAILED"
+        }
+      }
+    ],
+    "parameters": {
+      "batch_id": {
+        "type": "string",
+        "defaultValue": "1"
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "alerted_at": "2026-10-06T11:35:14+00:00",
+  "pipeline_name": "b040c72b-79c5-4d70-bf44-bd7a77bbdd33",
+  "pipeline_run_id": "cf7e38b3-a157-4203-9a7a-eb489fac3f7c",
+  "batch_id": "abc",
+  "message": "NovaCart pipeline run cf7e38b3-a157-4203-9a7a-eb489fac3f7c failed for batch_id='abc'. See Monitor > b040c72b-79c5-4d70-bf44-bd7a77bbdd33 for the failed step and its error."
+}

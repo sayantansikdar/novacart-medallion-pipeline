@@ -1,0 +1,51 @@
+[
+  {
+    "id": "c12f4674-3f72-463f-9e73-137fad706648",
+    "itemId": "b040c72b-79c5-4d70-bf44-bd7a77bbdd33",
+    "jobType": "Pipeline",
+    "invokeType": "Manual",
+    "status": "Completed",
+    "failureReason": null,
+    "rootActivityId": "1a69df8d-338d-4959-8d60-92106d83a7c2",
+    "startTimeUtc": "2026-10-06T12:11:24.873059",
+    "endTimeUtc": "2026-10-06T12:27:49.0766667"
+  },
+  {
+    "id": "0a7efe86-6ec7-4936-b695-f1bc8247b733",
+    "itemId": "b040c72b-79c5-4d70-bf44-bd7a77bbdd33",
+    "jobType": "Pipeline",
+    "invokeType": "Manual",
+    "status": "Completed",
+    "failureReason": null,
+    "rootActivityId": "28640b2a-1787-47c3-93c3-8ffe5dc7779e",
+    "startTimeUtc": "2026-10-06T11:55:01.3171706",
+    "endTimeUtc": "2026-10-06T12:11:13.26"
+  },
+  {
+    "id": "afdf5e87-99b8-4990-9707-6adef2205c36",
+    "itemId": "b040c72b-79c5-4d70-bf44-bd7a77bbdd33",
+    "jobType": "Pipeline",
+    "invokeType": "Manual",
+    "status": "Completed",
+    "failureReason": null,
+    "rootActivityId": "8c0e2d10-3107-46e3-8dd6-eec12e719bd1",
+    "startTimeUtc": "2026-10-06T11:41:26.0299332",
+    "endTimeUtc": "2026-10-06T11:54:38.1733333"
+  },
+  {
+    "id": "cf7e38b3-a157-4203-9a7a-eb489fac3f7c",
+    "itemId": "b040c72b-79c5-4d70-bf44-bd7a77bbdd33",
+    "jobType": "Pipeline",
+    "invokeType": "Manual",
+    "status": "Failed",
+    "failureReason": {
+      "requestId": "e1be5399-8ea3-4c2b-b099-fc0ef64b91a2",
+      "errorCode": "NOVACART_PIPELINE_FAILED",
+      "message": "Operation on target fail_run failed: NovaCart pipeline failed; see the failed step in Monitor. An alert was recorded by notify_failure.",
+      "isRetriable": false
+    },
+    "rootActivityId": "85ea3725-9f73-4df1-afb1-0c0f9473eaa0",
+    "startTimeUtc": "2026-10-06T11:30:19.5845245",
+    "endTimeUtc": "2026-10-06T11:35:42.0066667"
+  }
+]
