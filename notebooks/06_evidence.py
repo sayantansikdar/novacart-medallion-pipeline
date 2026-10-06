@@ -158,7 +158,8 @@ def vacuum_warning():
     spark.sql(f"VACUUM {demo} RETAIN 0 HOURS")
     spark.conf.set("spark.databricks.delta.retentionDurationCheck.enabled", "true")
     try:
-        spark.read.option("versionAsOf", 0).table(demo).count()
+        # collect() really opens the data files; count() alone can be answered from the Delta log's statistics
+        spark.read.option("versionAsOf", 0).table(demo).collect()
         after = "version 0 still readable"
     except Exception as e:
         after = str(e).split("\n")[0][:300]

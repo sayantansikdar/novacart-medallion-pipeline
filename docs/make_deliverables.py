@@ -212,9 +212,9 @@ else:
     o = ev["optimize"]
     story += [P("5.4 Storage optimisation on the fact table", "h2"),
               table([["", "Files", "Size (bytes)", "Rows", "Sum of net_usd"],
-                     ["Before", o["before"]["numFiles"], o["before"]["sizeInBytes"], o["data_before"]["rows"], o["data_before"]["net_usd"]],
-                     ["After", o["after"]["numFiles"], o["after"]["sizeInBytes"], o["data_after"]["rows"], o["data_after"]["net_usd"]]],
-                    [20 * mm, 25 * mm, 30 * mm, 25 * mm, FULL - 100 * mm]),
+                     ["Before (this run)", o["before"]["numFiles"], o["before"]["sizeInBytes"], o["data_before"]["rows"], o["data_before"]["net_usd"]],
+                     ["After (this run)", o["after"]["numFiles"], o["after"]["sizeInBytes"], o["data_after"]["rows"], o["data_after"]["net_usd"]]],
+                    [28 * mm, 22 * mm, 28 * mm, 22 * mm, FULL - 100 * mm]),
               P("OPTIMIZE commits in the table history: " + "; ".join(
                   f"v{c['version']} ({when(c['timestamp'])}): <b>{c['files_removed']} files → {c['files_added']}</b>"
                   for c in o.get("optimize_commits", [])) +

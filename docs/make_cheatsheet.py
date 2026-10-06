@@ -174,6 +174,8 @@ mods = table([
      "<font color='#1f7a3d'>✓ all 29 pass</font>: G1–G9, C5, C6, I5; every gold total equals an independent plain-Python calculation to the cent"],
     ["7", "Pipeline", "Fabric Data Pipeline <i>novacart_medallion</i>: batch_id parameter, 2 retries / 60 s, on-failure notify_failure → fail_run",
      "<font color='#1f7a3d'>✓ failure path</font> (batch_id = abc: setup failed 3×, rest skipped, alert recorded, run Failed). " + M7],
+    ["8", "Evidence", "06_evidence: history, time travel, schema + CHECK, OPTIMIZE, VACUUM demo, CDF, incremental gold",
+     "<font color='#1f7a3d'>✓ 11/11</font>: v3 = batch 1, v4 = batch 2, no re-run version; OPTIMIZE 13 files → 1; incremental gold = full rebuild (0 differences)"],
 ], [5 * mm, 25 * mm, 70 * mm, FULL - 100 * mm])
 story.append(mods)
 
@@ -216,9 +218,8 @@ todo = table([
     ["Module", "Plan"],
     ["7 Screens", "Screenshots: app.fabric.microsoft.com → <b>Monitor</b> → novacart_medallion run → View run details (batch 1, "
      "batch 2, abc failure). Trigger design in the note: file-arrival event vs fixed or windowed schedule."],
-    ["8 Evidence", "History after batch 1 / 2 / 2 again; VERSION AS OF right after batch 1; schema enforcement (extra column "
-     "rejected) + CHECK violation; OPTIMIZE / V-Order before vs after; VACUUM warning (limits time travel). Extras: Change "
-     "Data Feed rows changed in batch 2, incremental gold, automatic ingestion."],
+    ["Done", "Deliverables pack: <i>deliverables/NovaCart_Deliverables.pdf</i> (pipeline export, 4 monitored runs, DQ report, "
+     "Part 5/6 evidence) and <i>evidence/EVIDENCE.md</i>."],
     ["9 Submission", "Test summary, submission checklist, AI-use disclosure per module, design note (≤ 1.5 pages), "
      "teardown (pause or delete the F2, clean the workspace)."],
 ], [21 * mm, FULL - 21 * mm])

@@ -1,0 +1,282 @@
+{
+  "evidence": {
+    "cdf": {
+      "by_change_type": {
+        "insert": 450,
+        "update_postimage": 137,
+        "update_preimage": 137
+      },
+      "sample_updates": [
+        {
+          "order_id": "NC-100267",
+          "status_after": "delivered",
+          "status_before": "shipped"
+        },
+        {
+          "order_id": "NC-100272",
+          "status_after": "delivered",
+          "status_before": "shipped"
+        },
+        {
+          "order_id": "NC-100280",
+          "status_after": "delivered",
+          "status_before": "paid"
+        },
+        {
+          "order_id": "NC-100292",
+          "status_after": "delivered",
+          "status_before": "shipped"
+        },
+        {
+          "order_id": "NC-100306",
+          "status_after": "delivered",
+          "status_before": "paid"
+        },
+        {
+          "order_id": "NC-100314",
+          "status_after": "delivered",
+          "status_before": "shipped"
+        },
+        {
+          "order_id": "NC-100319",
+          "status_after": "delivered",
+          "status_before": "shipped"
+        },
+        {
+          "order_id": "NC-100320",
+          "status_after": "delivered",
+          "status_before": "shipped"
+        },
+        {
+          "order_id": "NC-100329",
+          "status_after": "delivered",
+          "status_before": "shipped"
+        },
+        {
+          "order_id": "NC-100331",
+          "status_after": "delivered",
+          "status_before": "paid"
+        }
+      ],
+      "status_transitions": [
+        {
+          "count": "66",
+          "status_after": "delivered",
+          "status_before": "shipped"
+        },
+        {
+          "count": "43",
+          "status_after": "delivered",
+          "status_before": "paid"
+        },
+        {
+          "count": "26",
+          "status_after": "delivered",
+          "status_before": "placed"
+        },
+        {
+          "count": "2",
+          "status_after": "cancelled",
+          "status_before": "paid"
+        }
+      ],
+      "version": 4
+    },
+    "check_constraint": {
+      "attempt": "insert an order with status 'refunded'",
+      "error": ": org.apache.spark.sql.delta.schema.DeltaInvariantViolationException: [DELTA_VIOLATE_CONSTRAINT_WITH_VALUES] CHECK constraint orders_status_valid (status IN ('placed', 'paid', 'shipped', 'delivered', 'cancelled')) violated by row with values:",
+      "version_after": 4
+    },
+    "history": [
+      {
+        "operation": "CREATE TABLE",
+        "rows_inserted": null,
+        "rows_updated": null,
+        "timestamp": "2026-10-06 11:42:01.606000",
+        "userMetadata": "step=setup",
+        "version": "0"
+      },
+      {
+        "operation": "ADD CONSTRAINT",
+        "rows_inserted": null,
+        "rows_updated": null,
+        "timestamp": "2026-10-06 11:42:11.711000",
+        "userMetadata": "step=setup",
+        "version": "1"
+      },
+      {
+        "operation": "ADD CONSTRAINT",
+        "rows_inserted": null,
+        "rows_updated": null,
+        "timestamp": "2026-10-06 11:42:16.450000",
+        "userMetadata": "step=setup",
+        "version": "2"
+      },
+      {
+        "operation": "MERGE",
+        "rows_inserted": "495",
+        "rows_updated": "0",
+        "timestamp": "2026-10-06 11:50:07.206000",
+        "userMetadata": "batch_id=1 step=silver.orders",
+        "version": "3"
+      },
+      {
+        "operation": "MERGE",
+        "rows_inserted": "450",
+        "rows_updated": "137",
+        "timestamp": "2026-10-06 12:04:57.919000",
+        "userMetadata": "batch_id=2 step=silver.orders",
+        "version": "4"
+      }
+    ],
+    "incremental_gold": {
+      "affected_orders": 608,
+      "differences_vs_full_rebuild": 0,
+      "lines_rebuilt": 1266,
+      "lines_total": 1933,
+      "reference_tables_changed_in_batch_2": []
+    },
+    "optimize": {
+      "after": {
+        "numFiles": 1,
+        "sizeInBytes": 83705
+      },
+      "before": {
+        "numFiles": 1,
+        "sizeInBytes": 83705
+      },
+      "command": "OPTIMIZE LH_NovaCart_Gold.dbo.fact_order_line ZORDER BY (order_date)",
+      "data_after": {
+        "net_usd": "351746.0626",
+        "rows": "1933"
+      },
+      "data_before": {
+        "net_usd": "351746.0626",
+        "rows": "1933"
+      },
+      "optimize_commits": [
+        {
+          "files_added": "1",
+          "files_removed": "13",
+          "timestamp": "2026-10-06 12:46:29.461000",
+          "version": 3
+        },
+        {
+          "files_added": "1",
+          "files_removed": "1",
+          "timestamp": "2026-10-06 12:50:48.691000",
+          "version": 4
+        },
+        {
+          "files_added": "1",
+          "files_removed": "1",
+          "timestamp": "2026-10-06 12:56:38.612000",
+          "version": 5
+        },
+        {
+          "files_added": "1",
+          "files_removed": "1",
+          "timestamp": "2026-10-06 13:02:46.154000",
+          "version": 6
+        }
+      ]
+    },
+    "point_in_time": {
+      "query": "SELECT * FROM LH_NovaCart_Silver.dbo.orders VERSION AS OF 3",
+      "rows_now": 945,
+      "rows_then": 495,
+      "status_then": [
+        {
+          "count": "59",
+          "status": "cancelled"
+        },
+        {
+          "count": "274",
+          "status": "delivered"
+        },
+        {
+          "count": "45",
+          "status": "paid"
+        },
+        {
+          "count": "51",
+          "status": "placed"
+        },
+        {
+          "count": "66",
+          "status": "shipped"
+        }
+      ],
+      "timestamp": "2026-10-06 11:50:07.206000"
+    },
+    "schema_enforcement": {
+      "attempt": "append 1 row of silver.orders with an extra column loyalty_points",
+      "error": "[_LEGACY_ERROR_TEMP_DELTA_0007] A schema mismatch detected when writing to the Delta table (Table ID: 68dbd529-1650-4581-9274-b45dc507c19f).",
+      "version_after": 4,
+      "version_before": 4
+    },
+    "vacuum": {
+      "after_vacuum": "An error occurred while calling o9766.collectToPython.",
+      "version_0_rows_before_vacuum": 30
+    }
+  },
+  "failed": [],
+  "passed": 11,
+  "results": [
+    {
+      "detail": "[(3, 'batch_id=1 step=silver.orders', '495', '0'), (4, 'batch_id=2 step=silver.orders', '450', '137')]",
+      "passed": true,
+      "test": "R1 one MERGE commit per batch, tagged in userMetadata"
+    },
+    {
+      "detail": "latest version = 4",
+      "passed": true,
+      "test": "R1 the batch 2 re-run made no commit (no rows changed, so no new version)"
+    },
+    {
+      "detail": "495",
+      "passed": true,
+      "test": "R2 VERSION AS OF 3 returns the post-batch-1 table (495 orders)"
+    },
+    {
+      "detail": "2026-10-06 11:50:07.206000",
+      "passed": true,
+      "test": "R2 TIMESTAMP AS OF the batch-1 commit returns the same rows"
+    },
+    {
+      "detail": "v4 -> v4: [_LEGACY_ERROR_TEMP_DELTA_0007] A schema mismatch detected when writing to the Delta table (Table ID: 68dbd529-1650-4581-9274-b45dc507c19f).",
+      "passed": true,
+      "test": "R3 append with an extra column is rejected; table version unchanged"
+    },
+    {
+      "detail": ": org.apache.spark.sql.delta.schema.DeltaInvariantViolationException: [DELTA_VIOLATE_CONSTRAINT_WITH_VALUES] CHECK constraint orders_status_valid (status IN ('p",
+      "passed": true,
+      "test": "R4 status 'refunded' violates the CHECK constraint; version unchanged"
+    },
+    {
+      "detail": "OPTIMIZE v3: 13 files -> 1; now 1 file(s), rows 1933, net_usd 351746.0626",
+      "passed": true,
+      "test": "R5 OPTIMIZE compacted the fact table's files; data identical"
+    },
+    {
+      "detail": "An error occurred while calling o9766.collectToPython.",
+      "passed": true,
+      "test": "VACUUM removes the files of old versions: time travel to them fails afterwards"
+    },
+    {
+      "detail": "{'insert': 450, 'update_postimage': 137, 'update_preimage': 137}",
+      "passed": true,
+      "test": "CDF: batch 2 = 450 inserted orders and 137 updated orders"
+    },
+    {
+      "detail": "none",
+      "passed": true,
+      "test": "reference tables unchanged in batch 2, so an incremental update is valid"
+    },
+    {
+      "detail": "608 orders / 1266 lines rebuilt, 0 differences",
+      "passed": true,
+      "test": "incremental gold (only changed orders rebuilt) = full rebuild"
+    }
+  ]
+}
