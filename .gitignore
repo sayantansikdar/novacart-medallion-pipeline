@@ -1,0 +1,34 @@
+# Secrets and local credentials: never commit these
+.env
+.env.*
+*.pem
+*.key
+.databrickscfg
+*.p12
+*credentials*.json
+*service-account*.json
+
+# Source data stays outside the repo (the lab forbids editing it, and the repo is public)
+NovaCart_SourceData/
+input/
+*.csv
+*.jsonl
+*_json.txt
+*_jsonl.txt
+
+# Python / Spark / local tooling
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+spark-warehouse/
+metastore_db/
+derby.log
+.ipynb_checkpoints/
+.databricks/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
