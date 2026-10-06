@@ -180,7 +180,8 @@ FX_CONTENT_COLS = ["rate_to_usd"]
 def prepare_fx(bronze_df):
     df = bronze_df.select(
         "*",
-        F.expr("try_to_date(trim(rate_date), 'yyyy-MM-dd')").alias("_date"),
+        # try_to_date does not exist in Fabric's Spark 3.5, so parse as a timestamp and take the date
+        F.to_date(F.try_to_timestamp(F.trim(F.col("rate_date")), F.lit("yyyy-MM-dd"))).alias("_date"),
         F.upper(blank_to_null(F.col("currency"))).alias("_currency"),
         try_cast("rate_to_usd", "DECIMAL(18,8)").alias("_rate"),
     )
