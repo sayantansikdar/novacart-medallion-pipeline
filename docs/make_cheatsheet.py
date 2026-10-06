@@ -212,9 +212,9 @@ story.append(t)
 story.append(P("9 · Remaining stages", "h"))
 todo = table([
     ["Module", "Plan"],
-    ["7 Runs", "Reset, then batch 1 → batch 2 → batch 2 again through the pipeline; verified with time travel against the "
-     "Python reference for “after batch 1” and “final”. Screenshots: app.fabric.microsoft.com → <b>Monitor</b> → "
-     "novacart_medallion run → View run details. Trigger design: file-arrival event vs fixed or windowed schedule."],
+    ["7 Finish", "Time-travel verification of the official runs (running now) against the Python reference for “after batch 1” and "
+     "“final”. Screenshots: app.fabric.microsoft.com → <b>Monitor</b> → novacart_medallion run → View run details. "
+     "Trigger design in the note: file-arrival event vs fixed or windowed schedule."],
     ["8 Evidence", "History after batch 1 / 2 / 2 again; VERSION AS OF right after batch 1; schema enforcement (extra column "
      "rejected) + CHECK violation; OPTIMIZE / V-Order before vs after; VACUUM warning (limits time travel). Extras: Change "
      "Data Feed rows changed in batch 2, incremental gold, automatic ingestion."],
