@@ -1,3 +1,7 @@
+# %% [parameters]
+# Set by the pipeline; this default is only used when the notebook is run by hand.
+batch_id = "1"
+
 # %%
 # 00_setup: creates every silver table with its constraints. First task of every pipeline run.
 # Idempotent: CREATE TABLE IF NOT EXISTS, constraints added only when missing, and the
@@ -5,6 +9,10 @@
 
 # %%
 %run 00_config
+
+# %%
+# Fail the whole run at its first task when batch_id is invalid (test O1), before anything is written.
+validate_batch_id(batch_id)
 
 # %%
 # ---------------------------------------------------------------- Table definitions

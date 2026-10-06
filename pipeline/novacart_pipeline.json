@@ -1,0 +1,22 @@
+{
+  "_comment": "Fabric Data Pipeline for the NovaCart medallion lab. Notebook steps refer to notebooks by name; setup/pipeline_tool.py swaps in their ids at deploy time. Every step: 2 retries, 60 s apart, 1 h timeout. Any failure skips the steps after it, so 'gold' ends Failed or Skipped and the on-failure path runs.",
+  "parameters": {
+    "batch_id": {"type": "string", "defaultValue": "1"}
+  },
+  "steps": [
+    {"name": "setup",            "notebook": "00_setup",            "after": null},
+    {"name": "bronze",           "notebook": "01_bronze",           "after": "setup"},
+    {"name": "silver_reference", "notebook": "03_silver_reference", "after": "bronze"},
+    {"name": "silver_orders",    "notebook": "02_silver_orders",    "after": "silver_reference"},
+    {"name": "silver_items",     "notebook": "04_silver_items",     "after": "silver_orders"},
+    {"name": "gold",             "notebook": "05_gold",             "after": "silver_items"}
+  ],
+  "on_failure": {
+    "watch": "gold",
+    "notify_notebook": "99_notify_failure",
+    "fail_message": "NovaCart pipeline failed; see the failed step in Monitor. An alert was recorded by notify_failure."
+  },
+  "retry": 2,
+  "retry_interval_seconds": 60,
+  "timeout": "0.01:00:00"
+}
