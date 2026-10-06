@@ -8,6 +8,7 @@ batch 2, and when either batch is run twice. Team: Bug Byts.
 - **Submission pack, test results and AI-use disclosure:** [SUBMISSION.md](SUBMISSION.md)
 - **Design note:** [docs/NovaCart_Design_Note.pdf](docs/NovaCart_Design_Note.pdf)
 - **Deliverables (pipeline export, monitored runs, DQ report, evidence):** [deliverables/NovaCart_Deliverables.pdf](deliverables/NovaCart_Deliverables.pdf)
+- **Contributions (incl. the master build prompt and test matrix):** [CONTRIBUTIONS.md](CONTRIBUTIONS.md)
 - **Evidence write-up:** [evidence/EVIDENCE.md](evidence/EVIDENCE.md) · **Cheatsheet:** [docs/NovaCart_Pipeline_Cheatsheet.pdf](docs/NovaCart_Pipeline_Cheatsheet.pdf)
 
 ## Layout
