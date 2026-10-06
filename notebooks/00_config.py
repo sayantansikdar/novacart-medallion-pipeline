@@ -57,6 +57,44 @@ def source_file(entity, batch_id):
     return s["files"][batch_id] if s["kind"] == "incremental" else s["file"]
 
 
+CORRUPT_COL = "_corrupt_record"
+
+
+def read_raw(path, fmt):
+    """Read one raw file exactly as received: every column is STRING and a malformed
+    record is kept in _corrupt_record instead of failing the load (test B5).
+
+    Two passes: the first only discovers the column names (so a new column in a later
+    file is picked up, not dropped), the second reads with an all-STRING schema.
+    A nested JSON object (order item `attributes`) read as STRING keeps its raw JSON text."""
+    if fmt == "csv":
+        reader = spark.read.format("csv").option("header", True)
+    else:
+        reader = spark.read.format("json").option("primitivesAsString", True)
+        if fmt == "json_array":
+            reader = reader.option("multiLine", True)      # one JSON array spread over many lines
+    columns = reader.load(path).columns                     # pass 1: column names only
+    schema = T.StructType([T.StructField(c, T.StringType()) for c in columns if c != CORRUPT_COL]
+                          + [T.StructField(CORRUPT_COL, T.StringType())])
+    return (reader.schema(schema)                           # pass 2: everything as STRING
+                  .option("mode", "PERMISSIVE")
+                  .option("columnNameOfCorruptRecord", CORRUPT_COL)
+                  .load(path))
+
+
+def count_source_records(path, fmt):
+    """Independent record count for a raw file, used to prove bronze loaded every record (B1).
+    CSV: non-blank lines minus the header. JSON Lines: non-blank lines.
+    JSON array: number of elements, counted by Python's json module, not Spark's JSON reader.
+    (notebookutils.fs.head is not used: it returns at most ~100 KB, so a larger file is cut off.)"""
+    if fmt == "json_array":
+        import json
+        whole_file = spark.read.text(path, wholetext=True).first()[0]
+        return len(json.loads(whole_file))
+    lines = spark.read.text(path).where(F.trim("value") != "").count()
+    return lines - 1 if fmt == "csv" else lines
+
+
 def validate_batch_id(value):
     """The pipeline passes batch_id as text. Anything other than 1 or 2 stops the run
     at the first step (test O1) instead of loading a wrong or empty batch."""

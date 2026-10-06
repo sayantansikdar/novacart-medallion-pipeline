@@ -23,9 +23,10 @@ def token():
          "--query", "accessToken", "-o", "tsv"], text=True).strip()
 
 
-def call(method, url, body=None, attempts=5):
+def call(method, url, body=None, attempts=60):
     """Returns (status, headers, parsed json or None).
-    Network errors (e.g. a DNS blip) are retried; HTTP errors stop the script."""
+    Network errors (e.g. DNS outages, seen for minutes at a time on the dev machine) are
+    retried for up to 10 minutes, so a running notebook is never abandoned; HTTP errors stop the script."""
     for attempt in range(1, attempts + 1):
         req = urllib.request.Request(url if url.startswith("http") else API + url, method=method,
                                      data=json.dumps(body).encode() if body is not None else None,
