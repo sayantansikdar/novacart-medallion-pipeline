@@ -195,7 +195,9 @@ right = [P("7 · Real-data results so far", "h")] + bullets([
     "Final status: delivered 666 · cancelled 107 · shipped 89 · placed 44 · paid 39 (the late copies were ignored).",
     "48 orders have a currency derived from the shipping country; 0 orders quarantined.",
     "Re-run of batch 2: <b>0 inserted, 0 updated</b>, and <b>no new table version</b>: Delta writes no commit for a "
-    "MERGE that changes nothing (history: v3 = batch 1, v4 = batch 2).",
+    "MERGE that changes nothing (official history: v3 = batch 1, v4 = batch 2, latest = v4).",
+    "Time travel: silver.orders VERSION AS OF 3 = 495 orders with exactly the batch-1 status mix; gold read “as of batch 1” "
+    "= the batch-1 Python reference ($150,062.64, 64 mismatches).",
     "Bronze: 1418 / 1006 / 194 / 40 / 84 / 1164 rows per file, cross-checked by an independent count.",
     "Items: <b>1933 lines</b> (971 + 974 - 12 re-delivered); 10 + 8 orphans quarantined; 14 unknown-product lines flagged.",
     "dim_customer: <b>166 versions</b> for 130 customers (+ the -1 row); 5 CRM rows quarantined; no overlaps or gaps.",
@@ -212,9 +214,8 @@ story.append(t)
 story.append(P("9 · Remaining stages", "h"))
 todo = table([
     ["Module", "Plan"],
-    ["7 Finish", "Time-travel verification of the official runs (running now) against the Python reference for “after batch 1” and "
-     "“final”. Screenshots: app.fabric.microsoft.com → <b>Monitor</b> → novacart_medallion run → View run details. "
-     "Trigger design in the note: file-arrival event vs fixed or windowed schedule."],
+    ["7 Screens", "Screenshots: app.fabric.microsoft.com → <b>Monitor</b> → novacart_medallion run → View run details (batch 1, "
+     "batch 2, abc failure). Trigger design in the note: file-arrival event vs fixed or windowed schedule."],
     ["8 Evidence", "History after batch 1 / 2 / 2 again; VERSION AS OF right after batch 1; schema enforcement (extra column "
      "rejected) + CHECK violation; OPTIMIZE / V-Order before vs after; VACUUM warning (limits time travel). Extras: Change "
      "Data Feed rows changed in batch 2, incremental gold, automatic ingestion."],
