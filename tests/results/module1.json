@@ -1,0 +1,92 @@
+{
+  "passed": 17,
+  "failed": [],
+  "results": [
+    {
+      "test": "SHA-256 OneLake copy = local original: orders_batch_1.csv",
+      "passed": true,
+      "detail": "identical"
+    },
+    {
+      "test": "SHA-256 OneLake copy = local original: orders_batch_2.csv",
+      "passed": true,
+      "detail": "identical"
+    },
+    {
+      "test": "SHA-256 OneLake copy = local original: order_items_batch_1_json.txt",
+      "passed": true,
+      "detail": "identical"
+    },
+    {
+      "test": "SHA-256 OneLake copy = local original: order_items_batch_2_jsonl.txt",
+      "passed": true,
+      "detail": "identical"
+    },
+    {
+      "test": "SHA-256 OneLake copy = local original: customers_changes.csv",
+      "passed": true,
+      "detail": "identical"
+    },
+    {
+      "test": "SHA-256 OneLake copy = local original: products.csv",
+      "passed": true,
+      "detail": "identical"
+    },
+    {
+      "test": "SHA-256 OneLake copy = local original: fx_rates.csv",
+      "passed": true,
+      "detail": "identical"
+    },
+    {
+      "test": "SHA-256 OneLake copy = local original: payments_json.txt",
+      "passed": true,
+      "detail": "identical"
+    },
+    {
+      "test": "rows readable in Spark: orders_batch_1.csv",
+      "passed": true,
+      "detail": "expected = actual = 1418 (00_verify_inputs run Completed; it asserts every count)"
+    },
+    {
+      "test": "rows readable in Spark: orders_batch_2.csv",
+      "passed": true,
+      "detail": "expected = actual = 1545 (00_verify_inputs run Completed; it asserts every count)"
+    },
+    {
+      "test": "rows readable in Spark: order_items_batch_1_json.txt",
+      "passed": true,
+      "detail": "expected = actual = 1006 (00_verify_inputs run Completed; it asserts every count)"
+    },
+    {
+      "test": "rows readable in Spark: order_items_batch_2_jsonl.txt",
+      "passed": true,
+      "detail": "expected = actual = 1007 (00_verify_inputs run Completed; it asserts every count)"
+    },
+    {
+      "test": "rows readable in Spark: customers_changes.csv",
+      "passed": true,
+      "detail": "expected = actual = 194 (00_verify_inputs run Completed; it asserts every count)"
+    },
+    {
+      "test": "rows readable in Spark: products.csv",
+      "passed": true,
+      "detail": "expected = actual = 40 (00_verify_inputs run Completed; it asserts every count)"
+    },
+    {
+      "test": "rows readable in Spark: fx_rates.csv",
+      "passed": true,
+      "detail": "expected = actual = 84 (00_verify_inputs run Completed; it asserts every count)"
+    },
+    {
+      "test": "rows readable in Spark: payments_json.txt",
+      "passed": true,
+      "detail": "expected = actual = 1164 (00_verify_inputs run Completed; it asserts every count)"
+    },
+    {
+      "test": "lakehouses created idempotently (second run)",
+      "passed": true,
+      "detail": "second run: Bronze, Silver, Gold all reported 'exists', nothing created"
+    }
+  ],
+  "source": "Module 1 run outputs: SHA-256 comparison, 00_verify_inputs notebook run, setup/01_create_lakehouses.sh re-run"
+}

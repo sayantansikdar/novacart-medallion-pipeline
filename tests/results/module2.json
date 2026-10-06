@@ -1,0 +1,231 @@
+{
+  "failed": [],
+  "passed": 45,
+  "results": [
+    {
+      "detail": "",
+      "passed": true,
+      "test": "O1 batch_id='abc' rejected"
+    },
+    {
+      "detail": "",
+      "passed": true,
+      "test": "O1 batch_id='3' rejected"
+    },
+    {
+      "detail": "",
+      "passed": true,
+      "test": "O1 batch_id='' rejected"
+    },
+    {
+      "detail": "",
+      "passed": true,
+      "test": "O1 batch_id=None rejected"
+    },
+    {
+      "detail": "",
+      "passed": true,
+      "test": "O1 batch_id='1.5' rejected"
+    },
+    {
+      "detail": "",
+      "passed": true,
+      "test": "O1 batch_id='2' accepted"
+    },
+    {
+      "detail": "2026-09-01 08:18",
+      "passed": true,
+      "test": "S1 2026-09-01T13:48:48+05:30 -> 2026-09-01 08:18 UTC"
+    },
+    {
+      "detail": "2026-09-01 08:18",
+      "passed": true,
+      "test": "S1 2026-09-01T08:18:48Z -> 2026-09-01 08:18 UTC"
+    },
+    {
+      "detail": "2026-09-01 08:18",
+      "passed": true,
+      "test": "S1 01/09/2026 08:18 -> 2026-09-01 08:18 UTC"
+    },
+    {
+      "detail": "2026-09-01",
+      "passed": true,
+      "test": "S2 2026-09-02T02:00+05:30 -> order_date 2026-09-01"
+    },
+    {
+      "detail": "None",
+      "passed": true,
+      "test": "S11 unparseable '2026-13-45T00:00:00Z' -> NULL"
+    },
+    {
+      "detail": "None",
+      "passed": true,
+      "test": "S11 unparseable 'not a date' -> NULL"
+    },
+    {
+      "detail": "None",
+      "passed": true,
+      "test": "S11 unparseable '' -> NULL"
+    },
+    {
+      "detail": "None",
+      "passed": true,
+      "test": "S11 unparseable None -> NULL"
+    },
+    {
+      "detail": "('INR', True)",
+      "passed": true,
+      "test": "S3 blank + IN -> INR derived"
+    },
+    {
+      "detail": "('USD', False)",
+      "passed": true,
+      "test": "S4 'usd' -> USD not derived"
+    },
+    {
+      "detail": "(None, False)",
+      "passed": true,
+      "test": "S5 blank + XX -> NULL (quarantine)"
+    },
+    {
+      "detail": "('GBP', False)",
+      "passed": true,
+      "test": "S4 ' gbp ' -> GBP"
+    },
+    {
+      "detail": "('GBP', True)",
+      "passed": true,
+      "test": "UK treated as GB -> GBP derived"
+    },
+    {
+      "detail": "('SGD', True)",
+      "passed": true,
+      "test": "S3 NULL + SG -> SGD derived"
+    },
+    {
+      "detail": "",
+      "passed": true,
+      "test": "D1 unbalanced DQ counts rejected"
+    },
+    {
+      "detail": "",
+      "passed": true,
+      "test": "setup table silver.orders exists"
+    },
+    {
+      "detail": "",
+      "passed": true,
+      "test": "setup table silver.order_items exists"
+    },
+    {
+      "detail": "",
+      "passed": true,
+      "test": "setup table silver.dim_customer exists"
+    },
+    {
+      "detail": "",
+      "passed": true,
+      "test": "setup table silver.products exists"
+    },
+    {
+      "detail": "",
+      "passed": true,
+      "test": "setup table silver.fx_rates exists"
+    },
+    {
+      "detail": "",
+      "passed": true,
+      "test": "setup table silver.payments exists"
+    },
+    {
+      "detail": "",
+      "passed": true,
+      "test": "setup table silver.quarantine exists"
+    },
+    {
+      "detail": "",
+      "passed": true,
+      "test": "setup table silver.dq_report exists"
+    },
+    {
+      "detail": "true",
+      "passed": true,
+      "test": "setup Change Data Feed on silver.orders"
+    },
+    {
+      "detail": "",
+      "passed": true,
+      "test": "setup constraint orders_status_valid"
+    },
+    {
+      "detail": "",
+      "passed": true,
+      "test": "setup constraint orders_currency_valid"
+    },
+    {
+      "detail": "",
+      "passed": true,
+      "test": "setup constraint items_line_type_valid"
+    },
+    {
+      "detail": "",
+      "passed": true,
+      "test": "setup constraint items_qty_sign"
+    },
+    {
+      "detail": "",
+      "passed": true,
+      "test": "setup constraint items_discount_range"
+    },
+    {
+      "detail": "",
+      "passed": true,
+      "test": "setup constraint items_price_not_negative"
+    },
+    {
+      "detail": "",
+      "passed": true,
+      "test": "setup constraint customer_valid_range"
+    },
+    {
+      "detail": "",
+      "passed": true,
+      "test": "setup constraint fx_rate_positive"
+    },
+    {
+      "detail": "",
+      "passed": true,
+      "test": "setup constraint fx_currency_valid"
+    },
+    {
+      "detail": "",
+      "passed": true,
+      "test": "setup constraint payments_status_valid"
+    },
+    {
+      "detail": "1",
+      "passed": true,
+      "test": "C5 unknown customer row exists exactly once"
+    },
+    {
+      "detail": "An error occurred while calling o362.sql.",
+      "passed": true,
+      "test": "R4 status 'refunded' violates CHECK"
+    },
+    {
+      "detail": "An error occurred while calling o362.sql.",
+      "passed": true,
+      "test": "NOT NULL customer_id enforced"
+    },
+    {
+      "detail": "An error occurred while calling o362.sql.",
+      "passed": true,
+      "test": "return line with positive qty violates CHECK"
+    },
+    {
+      "detail": "all versions unchanged",
+      "passed": true,
+      "test": "setup second run makes no commits (idempotent)"
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "failed": [],
+  "passed": 29,
+  "results": [
+    {
+      "detail": "(datetime.date(2026, 9, 4), Decimal('0.01200000'))",
+      "passed": true,
+      "test": "G1 Saturday INR order uses Friday's rate"
+    },
+    {
+      "detail": "12.0000",
+      "passed": true,
+      "test": "G1 net_usd = 1000 x 0.012 = 12"
+    },
+    {
+      "detail": "1.00000000",
+      "passed": true,
+      "test": "G2 USD order has rate 1"
+    },
+    {
+      "detail": "{'order_id': 'EARLY', 'line_no': 1, 'order_date': datetime.date(2026, 8, 30), 'order_ts': datetime.datetime(2026, 8, 30, 10, 0), 'status': 'paid', 'customer_id': 'K1', 'customer_sk': 11, 'product_id': 'P1', 'category': 'Books', 'product_known': True, 'line_type': 'sale', 'qty': 1, 'unit_price': Decimal('100.0000'), 'discount_pct': Decimal('0.00'), 'currency': 'INR', 'net_local': Decimal('100.0000'), 'fx_rate': None, 'fx_rate_date': None, 'net_usd': None, 'fx_missing': True, 'is_revenue': False}",
+      "passed": true,
+      "test": "G3 order before the first rate -> fx_missing, not revenue"
+    },
+    {
+      "detail": "",
+      "passed": true,
+      "test": "G4 placed and cancelled orders are not revenue"
+    },
+    {
+      "detail": "",
+      "passed": true,
+      "test": "C6 order before the tier change joins the old version"
+    },
+    {
+      "detail": "",
+      "passed": true,
+      "test": "C6 order after the tier change joins the new version"
+    },
+    {
+      "detail": "",
+      "passed": true,
+      "test": "C5 customer not in the CRM -> customer_sk -1"
+    },
+    {
+      "detail": "9.6000",
+      "passed": true,
+      "test": "I5 return reduces revenue on the original order's date (Sat: 12 - 2.4 = 9.6)"
+    },
+    {
+      "detail": "['K1', 'K2']",
+      "passed": true,
+      "test": "G6 top customers exclude the unknown customer"
+    },
+    {
+      "detail": "{'SAT', 'NOCRM', 'AFTER', 'BEFORE', 'P051', 'USD'}",
+      "passed": true,
+      "test": "G7 difference exactly 0.50 -> not flagged"
+    },
+    {
+      "detail": "{'SAT', 'NOCRM', 'AFTER', 'BEFORE', 'P051', 'USD'}",
+      "passed": true,
+      "test": "G8 difference 0.51 -> flagged"
+    },
+    {
+      "detail": "{'SAT', 'NOCRM', 'AFTER', 'BEFORE', 'P051', 'USD'}",
+      "passed": true,
+      "test": "G9 100 success - 20 refunded (50 failed ignored) = 80 -> not flagged"
+    },
+    {
+      "detail": "1",
+      "passed": true,
+      "test": "payment for an unknown order counted, not compared"
+    },
+    {
+      "detail": "1933",
+      "passed": true,
+      "test": "gold fact_lines = independent Python reference"
+    },
+    {
+      "detail": "295585.5703",
+      "passed": true,
+      "test": "gold revenue_usd_total = independent Python reference"
+    },
+    {
+      "detail": "30",
+      "passed": true,
+      "test": "gold revenue_days = independent Python reference"
+    },
+    {
+      "detail": "{'Electronics': '223943.5064', 'Fashion': '20869.6472', 'Sports': '18413.6678', 'Home': '15924.4683', 'Beauty': '9639.4490', 'Books': '3834.9797', 'UNKNOWN': '2959.8519'}",
+      "passed": true,
+      "test": "gold revenue_by_category = independent Python reference"
+    },
+    {
+      "detail": "[['C0035', '20337.7709'], ['C0091', '18499.4867'], ['C0027', '17524.8262'], ['C0066', '17071.9142'], ['C0058', '16855.5545'], ['C0003', '16578.5552'], ['C0079', '14070.2138'], ['C0044', '13056.1478'], ['C0020', '12491.2514'], ['C0011', '11686.1405']]",
+      "passed": true,
+      "test": "gold top_customers = independent Python reference"
+    },
+    {
+      "detail": "13",
+      "passed": true,
+      "test": "gold payment_mismatches = independent Python reference"
+    },
+    {
+      "detail": "295585.5703 vs 295585.5703",
+      "passed": true,
+      "test": "G5 revenue_by_category total = fact revenue total"
+    },
+    {
+      "detail": "295585.5703 vs 295585.5703",
+      "passed": true,
+      "test": "G5 daily_revenue total = fact revenue total"
+    },
+    {
+      "detail": "1933 vs 1933",
+      "passed": true,
+      "test": "G5 fact lines = silver order_items lines"
+    },
+    {
+      "detail": "5",
+      "passed": true,
+      "test": "5 payments for unknown orders counted"
+    },
+    {
+      "detail": "10",
+      "passed": true,
+      "test": "G6 at most 10, descending, no unknown customer"
+    },
+    {
+      "detail": "['C0901', 'C0905', 'C0903', 'C0904', 'C0906', 'C0902']",
+      "passed": true,
+      "test": "C5 real data: only C0901-C0906 map to -1"
+    },
+    {
+      "detail": "14",
+      "passed": true,
+      "test": "I2 14 unknown-product lines in category UNKNOWN"
+    },
+    {
+      "detail": "",
+      "passed": true,
+      "test": "re-run gold -> identical results"
+    },
+    {
+      "detail": "15 dq rows, 7 reconciliation rows",
+      "passed": true,
+      "test": "DQ report exported as JSON for batch 2"
+    }
+  ]
+}

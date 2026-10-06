@@ -1,0 +1,173 @@
+{
+  "passed": 32,
+  "failed": [
+    "B2 orders _batch_id matches parameter"
+  ],
+  "results": [
+    {
+      "test": "B5 malformed line kept in _corrupt_record, load succeeds",
+      "passed": true,
+      "detail": "rows=3 corrupt=1 good=['F-1', 'F-3']"
+    },
+    {
+      "test": "B1 orders bronze rows = source records",
+      "passed": true,
+      "detail": "bronze=1418 source=1418"
+    },
+    {
+      "test": "B1 order_items bronze rows = source records",
+      "passed": true,
+      "detail": "bronze=1006 source=1006"
+    },
+    {
+      "test": "B1 customers_changes bronze rows = source records",
+      "passed": true,
+      "detail": "bronze=194 source=194"
+    },
+    {
+      "test": "B1 products bronze rows = source records",
+      "passed": true,
+      "detail": "bronze=40 source=40"
+    },
+    {
+      "test": "B1 fx_rates bronze rows = source records",
+      "passed": true,
+      "detail": "bronze=84 source=84"
+    },
+    {
+      "test": "B1 payments bronze rows = source records",
+      "passed": true,
+      "detail": "bronze=1164 source=1164"
+    },
+    {
+      "test": "B2 orders lineage never null",
+      "passed": true,
+      "detail": "null rows=0"
+    },
+    {
+      "test": "B4 orders every source column is STRING",
+      "passed": true,
+      "detail": "all STRING"
+    },
+    {
+      "test": "B2 order_items lineage never null",
+      "passed": true,
+      "detail": "null rows=0"
+    },
+    {
+      "test": "B4 order_items every source column is STRING",
+      "passed": true,
+      "detail": "all STRING"
+    },
+    {
+      "test": "B2 customers_changes lineage never null",
+      "passed": true,
+      "detail": "null rows=0"
+    },
+    {
+      "test": "B4 customers_changes every source column is STRING",
+      "passed": true,
+      "detail": "all STRING"
+    },
+    {
+      "test": "B2 products lineage never null",
+      "passed": true,
+      "detail": "null rows=0"
+    },
+    {
+      "test": "B4 products every source column is STRING",
+      "passed": true,
+      "detail": "all STRING"
+    },
+    {
+      "test": "B2 fx_rates lineage never null",
+      "passed": true,
+      "detail": "null rows=0"
+    },
+    {
+      "test": "B4 fx_rates every source column is STRING",
+      "passed": true,
+      "detail": "all STRING"
+    },
+    {
+      "test": "B2 payments lineage never null",
+      "passed": true,
+      "detail": "null rows=0"
+    },
+    {
+      "test": "B4 payments every source column is STRING",
+      "passed": true,
+      "detail": "all STRING"
+    },
+    {
+      "test": "B2 orders _batch_id matches parameter",
+      "passed": false,
+      "detail": "[2, 1]"
+    },
+    {
+      "test": "B4 day/month/year order_ts stored verbatim",
+      "passed": true,
+      "detail": "917 rows like 01/09/2026 08:18"
+    },
+    {
+      "test": "B4 lowercase 'inr' stored verbatim",
+      "passed": true,
+      "detail": "61 rows"
+    },
+    {
+      "test": "B4/I6 nested attributes kept as raw JSON text",
+      "passed": true,
+      "detail": "{\"color\":\"black\",\"size\":\"L\"}"
+    },
+    {
+      "test": "B4 unit_price sent as a JSON string kept as text",
+      "passed": true,
+      "detail": "1 rows"
+    },
+    {
+      "test": "B3 re-run batch 1: counts per _source_file unchanged",
+      "passed": true,
+      "detail": "unchanged"
+    },
+    {
+      "test": "B6 orders holds both batch slices",
+      "passed": true,
+      "detail": "{'orders_batch_2.csv': 1545, 'orders_batch_1.csv': 1418}"
+    },
+    {
+      "test": "B6 order_items holds both batch slices",
+      "passed": true,
+      "detail": "{'order_items_batch_1_json.txt': 1006, 'order_items_batch_2_jsonl.txt': 1007}"
+    },
+    {
+      "test": "B6 customers_changes snapshot loaded once, from batch 2",
+      "passed": true,
+      "detail": "counts={'customers_changes.csv': 194} batch_ids=[2]"
+    },
+    {
+      "test": "B6 products snapshot loaded once, from batch 2",
+      "passed": true,
+      "detail": "counts={'products.csv': 40} batch_ids=[2]"
+    },
+    {
+      "test": "B6 fx_rates snapshot loaded once, from batch 2",
+      "passed": true,
+      "detail": "counts={'fx_rates.csv': 84} batch_ids=[2]"
+    },
+    {
+      "test": "B6 payments snapshot loaded once, from batch 2",
+      "passed": true,
+      "detail": "counts={'payments_json.txt': 1164} batch_ids=[2]"
+    },
+    {
+      "test": "D1 bronze dq_report rows for 2 batches x 6 entities",
+      "passed": true,
+      "detail": "12"
+    },
+    {
+      "test": "D1 bronze rows_in = rows_out",
+      "passed": true,
+      "detail": "unbalanced=0"
+    }
+  ]
+}

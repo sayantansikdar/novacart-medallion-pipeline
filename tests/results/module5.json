@@ -1,0 +1,196 @@
+{
+  "failed": [],
+  "passed": 38,
+  "results": [
+    {
+      "detail": "['batch_id=1 step=silver.orders', 'batch_id=2 step=silver.orders']",
+      "passed": true,
+      "test": "R1 (Module 4, corrected) one tagged MERGE per batch, none for the no-op re-run"
+    },
+    {
+      "detail": "{('O-9', '1'): 'ORDER_NOT_FOUND', ('O-2', '1'): 'QTY_INVALID', ('O-2', '2'): 'DISCOUNT_INVALID'}",
+      "passed": true,
+      "test": "I1 line without order -> ORDER_NOT_FOUND"
+    },
+    {
+      "detail": "{('O-9', '1'): 'ORDER_NOT_FOUND', ('O-2', '1'): 'QTY_INVALID', ('O-2', '2'): 'DISCOUNT_INVALID'}",
+      "passed": true,
+      "test": "qty 'abc' -> QTY_INVALID; discount 150 -> DISCOUNT_INVALID"
+    },
+    {
+      "detail": "180.0000",
+      "passed": true,
+      "test": "I3 qty 2 x price 100 x (1 - 10%) = 180"
+    },
+    {
+      "detail": "(Decimal('0.00'), Decimal('50.0000'))",
+      "passed": true,
+      "test": "I4 NULL discount -> 0"
+    },
+    {
+      "detail": "P999",
+      "passed": true,
+      "test": "I2 unknown product loads, product_known = false"
+    },
+    {
+      "detail": "(-2, Decimal('-200.0000'))",
+      "passed": true,
+      "test": "I5 return qty forced negative"
+    },
+    {
+      "detail": "({'color': 'red', 'warranty_months': '12'}, '{\"color\": \"red\", \"warranty_months\": 12}')",
+      "passed": true,
+      "test": "I6 attributes parsed to a map, raw JSON kept"
+    },
+    {
+      "detail": "(1, Decimal('75.0000'))",
+      "passed": true,
+      "test": "I7 line corrected in batch 2 replaces batch 1"
+    },
+    {
+      "detail": "(0, 0)",
+      "passed": true,
+      "test": "I7 re-run batch 2 -> 0 inserted, 0 updated"
+    },
+    {
+      "detail": "75.0000",
+      "passed": true,
+      "test": "O4 batch 1 run after batch 2 does not undo the correction"
+    },
+    {
+      "detail": "{'K3': 'UPDATED_AT_MISSING'}",
+      "passed": true,
+      "test": "C1 CRM row without updated_at -> quarantined"
+    },
+    {
+      "detail": "['Gold', 'Platinum']",
+      "passed": true,
+      "test": "C2 e-mail-only change -> no new version (2 versions for K1, not 3)"
+    },
+    {
+      "detail": "['ann@new.com', 'ann@new.com']",
+      "passed": true,
+      "test": "C2 e-mail is Type 1: every version has the latest e-mail"
+    },
+    {
+      "detail": "[('1900-01-01 00:00:00', '2026-09-10 00:00:00', False), ('2026-09-10 00:00:00', '9999-12-31 23:59:59', True)]",
+      "passed": true,
+      "test": "C3 tier change -> new version, dates chain, is_current flips"
+    },
+    {
+      "detail": "",
+      "passed": true,
+      "test": "UK country stored as GB"
+    },
+    {
+      "detail": "",
+      "passed": true,
+      "test": "customer_sk is deterministic across rebuilds"
+    },
+    {
+      "detail": "{'products': 40, 'fx_rates': 84, 'payments': 1164, 'dim_customer': 167}",
+      "passed": true,
+      "test": "reference tables: 40 products, 84 fx rates, 1164 payments, 166 + 1 customer versions"
+    },
+    {
+      "detail": "(130, 130)",
+      "passed": true,
+      "test": "C4 one current version per customer (130 customers)"
+    },
+    {
+      "detail": "0",
+      "passed": true,
+      "test": "C4 no overlapping validity ranges"
+    },
+    {
+      "detail": "0",
+      "passed": true,
+      "test": "C3 versions chain with no gaps"
+    },
+    {
+      "detail": "5",
+      "passed": true,
+      "test": "C1 real data: 5 CRM rows without updated_at quarantined"
+    },
+    {
+      "detail": "1933",
+      "passed": true,
+      "test": "items: 971 (batch 1) + 974 (batch 2) - 12 re-delivered = 1933 lines"
+    },
+    {
+      "detail": "{1: 10, 2: 8}",
+      "passed": true,
+      "test": "I1 real data: 10 + 8 orphan lines quarantined (NC-990xxx)"
+    },
+    {
+      "detail": "14",
+      "passed": true,
+      "test": "I2 real data: 14 lines with unknown products loaded and flagged"
+    },
+    {
+      "detail": "0",
+      "passed": true,
+      "test": "I5 every return line has negative qty"
+    },
+    {
+      "detail": "{'batch_id': 1, 'layer': 'silver', 'entity': 'order_items', 'rule': '_TOTAL', 'rows_in': 1006, 'rows_out': 971, 'rows_quarantined': 10, 'rows_deduped': 25, 'rows_inserted': 971, 'rows_updated': 0, 'recorded_at': datetime.datetime(2026, 10, 6, 11, 6, 13, 810114)}",
+      "passed": true,
+      "test": "D1 order_items batch 1 balance"
+    },
+    {
+      "detail": "{'batch_id': 2, 'layer': 'silver', 'entity': 'order_items', 'rule': '_TOTAL', 'rows_in': 1007, 'rows_out': 974, 'rows_quarantined': 8, 'rows_deduped': 25, 'rows_inserted': 962, 'rows_updated': 0, 'recorded_at': datetime.datetime(2026, 10, 6, 11, 8, 33, 623653)}",
+      "passed": true,
+      "test": "D1 order_items batch 2 balance"
+    },
+    {
+      "detail": "{'batch_id': 1, 'layer': 'silver', 'entity': 'products', 'rule': '_TOTAL', 'rows_in': 40, 'rows_out': 40, 'rows_quarantined': 0, 'rows_deduped': 0, 'rows_inserted': 0, 'rows_updated': 0, 'recorded_at': datetime.datetime(2026, 10, 6, 11, 4, 15, 966125)}",
+      "passed": true,
+      "test": "D1 products batch 1 balance"
+    },
+    {
+      "detail": "{'batch_id': 2, 'layer': 'silver', 'entity': 'products', 'rule': '_TOTAL', 'rows_in': 40, 'rows_out': 40, 'rows_quarantined': 0, 'rows_deduped': 0, 'rows_inserted': 0, 'rows_updated': 0, 'recorded_at': datetime.datetime(2026, 10, 6, 11, 6, 46, 206647)}",
+      "passed": true,
+      "test": "D1 products batch 2 balance"
+    },
+    {
+      "detail": "{'batch_id': 1, 'layer': 'silver', 'entity': 'fx_rates', 'rule': '_TOTAL', 'rows_in': 84, 'rows_out': 84, 'rows_quarantined': 0, 'rows_deduped': 0, 'rows_inserted': 84, 'rows_updated': 0, 'recorded_at': datetime.datetime(2026, 10, 6, 11, 4, 38, 806268)}",
+      "passed": true,
+      "test": "D1 fx_rates batch 1 balance"
+    },
+    {
+      "detail": "{'batch_id': 2, 'layer': 'silver', 'entity': 'fx_rates', 'rule': '_TOTAL', 'rows_in': 84, 'rows_out': 84, 'rows_quarantined': 0, 'rows_deduped': 0, 'rows_inserted': 0, 'rows_updated': 0, 'recorded_at': datetime.datetime(2026, 10, 6, 11, 7, 3, 76821)}",
+      "passed": true,
+      "test": "D1 fx_rates batch 2 balance"
+    },
+    {
+      "detail": "{'batch_id': 1, 'layer': 'silver', 'entity': 'payments', 'rule': '_TOTAL', 'rows_in': 1164, 'rows_out': 1164, 'rows_quarantined': 0, 'rows_deduped': 0, 'rows_inserted': 1164, 'rows_updated': 0, 'recorded_at': datetime.datetime(2026, 10, 6, 11, 5, 3, 820665)}",
+      "passed": true,
+      "test": "D1 payments batch 1 balance"
+    },
+    {
+      "detail": "{'batch_id': 2, 'layer': 'silver', 'entity': 'payments', 'rule': '_TOTAL', 'rows_in': 1164, 'rows_out': 1164, 'rows_quarantined': 0, 'rows_deduped': 0, 'rows_inserted': 0, 'rows_updated': 0, 'recorded_at': datetime.datetime(2026, 10, 6, 11, 7, 24, 681394)}",
+      "passed": true,
+      "test": "D1 payments batch 2 balance"
+    },
+    {
+      "detail": "{'batch_id': 1, 'layer': 'silver', 'entity': 'dim_customer', 'rule': '_TOTAL', 'rows_in': 194, 'rows_out': 166, 'rows_quarantined': 5, 'rows_deduped': 23, 'rows_inserted': 166, 'rows_updated': 0, 'recorded_at': datetime.datetime(2026, 10, 6, 11, 5, 26, 804455)}",
+      "passed": true,
+      "test": "D1 dim_customer batch 1 balance"
+    },
+    {
+      "detail": "{'batch_id': 2, 'layer': 'silver', 'entity': 'dim_customer', 'rule': '_TOTAL', 'rows_in': 194, 'rows_out': 166, 'rows_quarantined': 5, 'rows_deduped': 23, 'rows_inserted': 0, 'rows_updated': 0, 'recorded_at': datetime.datetime(2026, 10, 6, 11, 7, 45, 712067)}",
+      "passed": true,
+      "test": "D1 dim_customer batch 2 balance"
+    },
+    {
+      "detail": "{'before': {'products': 1, 'fx_rates': 3, 'payments': 2, 'dim_customer': 3, 'order_items': 6}, 'after': {'products': 1, 'fx_rates': 3, 'payments': 2, 'dim_customer': 3, 'order_items': 6}}",
+      "passed": true,
+      "test": "re-run batch 2: no new commit on any table"
+    },
+    {
+      "detail": "(0, 0)",
+      "passed": true,
+      "test": "re-run batch 2: items 0 inserted, 0 updated"
+    }
+  ]
+}

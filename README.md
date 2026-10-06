@@ -12,6 +12,7 @@ Engineer programme).
 |---|---|
 | **Start here** | [Design note (1 page)](docs/NovaCart_Design_Note.pdf) · [Cheatsheet (2 pages)](docs/NovaCart_Pipeline_Cheatsheet.pdf) |
 | **Deliverables** | [Deliverables PDF](deliverables/NovaCart_Deliverables.pdf) (pipeline export, monitored runs, DQ report, evidence) · [Evidence write-up](evidence/EVIDENCE.md) |
+| **Tests** | [TEST_RESULTS.md](TEST_RESULTS.md): all 224 tests with their actual output and what each one shows |
 | **Submission** | [SUBMISSION.md](SUBMISSION.md) (checklist, test results, AI-use disclosure) · [CONTRIBUTIONS.md](CONTRIBUTIONS.md) |
 
 ---
@@ -194,7 +195,7 @@ was checked both for the state right after batch 1 (read with Delta time travel)
 
 The tests follow a 52-case matrix covering bronze, silver, customers, gold, orchestration, reliability and data
 quality. It's defined in [the master build prompt](docs/prompts/master_build_prompt.md). Each module has a test notebook
-under [`notebooks/tests/`](notebooks/tests), run on Fabric.
+under [`notebooks/tests/`](notebooks/tests), run on Fabric. **Every one of the 224 tests, with its actual output and what it shows, is in [TEST_RESULTS.md](TEST_RESULTS.md).**
 
 | Module | Covers | Result |
 |---|---|---|

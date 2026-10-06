@@ -1,0 +1,131 @@
+{
+  "failed": [],
+  "passed": 25,
+  "results": [
+    {
+      "detail": "[(3, 'batch_id=1 step=silver.orders'), (4, 'batch_id=2 step=silver.orders')]",
+      "passed": true,
+      "test": "R1 history: one MERGE for batch 1, one for batch 2"
+    },
+    {
+      "detail": "latest=4, merges=[(3, 'batch_id=1 step=silver.orders'), (4, 'batch_id=2 step=silver.orders')]",
+      "passed": true,
+      "test": "R1/S10 batch 2 re-run added no version (latest version = batch 2 MERGE)"
+    },
+    {
+      "detail": "495",
+      "passed": true,
+      "test": "R2 VERSION AS OF 3 (right after batch 1): 495 orders"
+    },
+    {
+      "detail": "{'shipped': 66, 'cancelled': 59, 'paid': 45, 'delivered': 274, 'placed': 51}",
+      "passed": true,
+      "test": "R2 status mix right after batch 1 = Python reference"
+    },
+    {
+      "detail": "{'shipped': 89, 'cancelled': 107, 'paid': 39, 'delivered': 666, 'placed': 44}",
+      "passed": true,
+      "test": "final orders and status mix = Python reference"
+    },
+    {
+      "detail": "971",
+      "passed": true,
+      "test": "after batch 1: gold fact_lines = Python reference"
+    },
+    {
+      "detail": "150062.6435",
+      "passed": true,
+      "test": "after batch 1: gold revenue_usd_total = Python reference"
+    },
+    {
+      "detail": "15",
+      "passed": true,
+      "test": "after batch 1: gold revenue_days = Python reference"
+    },
+    {
+      "detail": "{'Electronics': '117109.1863', 'Fashion': '10681.3423', 'Sports': '8598.0831', 'Home': '6933.2281', 'Beauty': '4201.6341', 'Books': '1778.3158', 'UNKNOWN': '760.8538'}",
+      "passed": true,
+      "test": "after batch 1: gold revenue_by_category = Python reference"
+    },
+    {
+      "detail": "[['C0066', '11434.8848'], ['C0035', '9976.2711'], ['C0044', '8567.5652'], ['C0003', '8411.0652'], ['C0027', '8027.1254'], ['C0091', '7170.4045'], ['C0079', '6940.9393'], ['C0058', '6933.2252'], ['C0011', '6926.1459'], ['C0020', '5810.8639']]",
+      "passed": true,
+      "test": "after batch 1: gold top_customers = Python reference"
+    },
+    {
+      "detail": "64",
+      "passed": true,
+      "test": "after batch 1: gold payment_mismatches = Python reference"
+    },
+    {
+      "detail": "1933",
+      "passed": true,
+      "test": "after batch 2 (final): gold fact_lines = Python reference"
+    },
+    {
+      "detail": "295585.5703",
+      "passed": true,
+      "test": "after batch 2 (final): gold revenue_usd_total = Python reference"
+    },
+    {
+      "detail": "30",
+      "passed": true,
+      "test": "after batch 2 (final): gold revenue_days = Python reference"
+    },
+    {
+      "detail": "{'Electronics': '223943.5064', 'Fashion': '20869.6472', 'Sports': '18413.6678', 'Home': '15924.4683', 'Beauty': '9639.4490', 'Books': '3834.9797', 'UNKNOWN': '2959.8519'}",
+      "passed": true,
+      "test": "after batch 2 (final): gold revenue_by_category = Python reference"
+    },
+    {
+      "detail": "[['C0035', '20337.7709'], ['C0091', '18499.4867'], ['C0027', '17524.8262'], ['C0066', '17071.9142'], ['C0058', '16855.5545'], ['C0003', '16578.5552'], ['C0079', '14070.2138'], ['C0044', '13056.1478'], ['C0020', '12491.2514'], ['C0011', '11686.1405']]",
+      "passed": true,
+      "test": "after batch 2 (final): gold top_customers = Python reference"
+    },
+    {
+      "detail": "13",
+      "passed": true,
+      "test": "after batch 2 (final): gold payment_mismatches = Python reference"
+    },
+    {
+      "detail": "[('revenue_by_category total = fact revenue total', '295585.5703'), ('daily_revenue total = fact revenue total', '295585.5703'), ('fact lines = silver order_items lines', '1933'), ('payments whose order is unknown (excluded from mismatches)', '5'), ('lines without an FX rate (fx_missing, excluded)', '0'), ('lines for customers not in the CRM (customer_sk = -1)', '39'), ('orders with a payment mismatch > 0.50 USD', '13')]",
+      "passed": true,
+      "test": "G5 reconciliation all pass (final)"
+    },
+    {
+      "detail": "[('bronze', 'customers_changes'), ('bronze', 'fx_rates'), ('bronze', 'order_items'), ('bronze', 'orders'), ('bronze', 'payments'), ('bronze', 'products'), ('gold', 'fact_order_line'), ('silver', 'dim_customer'), ('silver', 'fx_rates'), ('silver', 'order_items'), ('silver', 'orders'), ('silver', 'payments'), ('silver', 'products')]",
+      "passed": true,
+      "test": "D1 dq_report has every step for batch 1"
+    },
+    {
+      "detail": "all balanced",
+      "passed": true,
+      "test": "D1 every count balances for batch 1"
+    },
+    {
+      "detail": "[('bronze', 'customers_changes'), ('bronze', 'fx_rates'), ('bronze', 'order_items'), ('bronze', 'orders'), ('bronze', 'payments'), ('bronze', 'products'), ('gold', 'fact_order_line'), ('silver', 'dim_customer'), ('silver', 'fx_rates'), ('silver', 'order_items'), ('silver', 'orders'), ('silver', 'payments'), ('silver', 'products')]",
+      "passed": true,
+      "test": "D1 dq_report has every step for batch 2"
+    },
+    {
+      "detail": "all balanced",
+      "passed": true,
+      "test": "D1 every count balances for batch 2"
+    },
+    {
+      "detail": "",
+      "passed": true,
+      "test": "DQ JSON export exists for batch 1"
+    },
+    {
+      "detail": "",
+      "passed": true,
+      "test": "DQ JSON export exists for batch 2"
+    },
+    {
+      "detail": "1",
+      "passed": true,
+      "test": "on-failure alert from the batch_id=abc run is still recorded"
+    }
+  ]
+}

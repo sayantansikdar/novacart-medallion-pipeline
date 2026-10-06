@@ -1,0 +1,138 @@
+{
+  "passed": 25,
+  "failed": [
+    "R1 preview: MERGE commits tagged per batch in history"
+  ],
+  "results": [
+    {
+      "test": "B2 (Module 3, corrected) orders batch 1 slice has _batch_id = 1",
+      "passed": true,
+      "detail": "[1]"
+    },
+    {
+      "test": "S11/S5 quarantine reasons",
+      "passed": true,
+      "detail": "{'F-1': 'UPDATED_AT_INVALID', 'G-1': 'ORDER_TS_INVALID', 'H-1': 'STATUS_INVALID', 'I-1': 'CURRENCY_UNRESOLVED', 'J-1': 'CURRENCY_INVALID'}"
+    },
+    {
+      "test": "batch 1: 5 inserted, 0 updated",
+      "passed": true,
+      "detail": "(5, 0)"
+    },
+    {
+      "test": "S6 exact duplicate -> one row",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "S7 two versions in a batch -> latest wins",
+      "passed": true,
+      "detail": "('paid', 'INR', False, '2026-09-10 11:00:00')"
+    },
+    {
+      "test": "S3 blank currency + IN -> INR derived",
+      "passed": true,
+      "detail": "('placed', 'INR', True, '2026-09-09 12:00:00')"
+    },
+    {
+      "test": "S4 'usd' -> USD",
+      "passed": true,
+      "detail": "('paid', 'USD', False, '2026-09-10 12:00:00')"
+    },
+    {
+      "test": "batch 2: 1 inserted (K-1), 2 updated (C-1, E-1)",
+      "passed": true,
+      "detail": "(1, 2)"
+    },
+    {
+      "test": "S8 newer version in batch 2 -> updated",
+      "passed": true,
+      "detail": "('shipped', 'USD', False, '2026-09-20 12:00:00')"
+    },
+    {
+      "test": "S9 older (late) version in batch 2 -> ignored",
+      "passed": true,
+      "detail": "('cancelled', 'GBP', False, '2026-09-10 12:00:00')"
+    },
+    {
+      "test": "tie: same updated_at, later batch, different content -> later batch wins",
+      "passed": true,
+      "detail": "('paid', 'INR', True, '2026-09-09 12:00:00')"
+    },
+    {
+      "test": "S10 re-run batch 2 -> 0 inserted, 0 updated",
+      "passed": true,
+      "detail": "(0, 0)"
+    },
+    {
+      "test": "S12 one row per order_id",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "O4 batch 2 then batch 1 -> same state as 1 then 2",
+      "passed": true,
+      "detail": "identical"
+    },
+    {
+      "test": "batch 1: 495 orders, one row each",
+      "passed": true,
+      "detail": "(495, 495)"
+    },
+    {
+      "test": "D1 batch 1 balance in = out + quarantined + deduped",
+      "passed": true,
+      "detail": "{'batch_id': 1, 'layer': 'silver', 'entity': 'orders', 'rule': '_TOTAL', 'rows_in': 1418, 'rows_out': 495, 'rows_quarantined': 0, 'rows_deduped': 923, 'rows_inserted': 495, 'rows_updated': 0, 'recorded_at': datetime.datetime(2026, 10, 6, 10, 23, 35, 725611)}"
+    },
+    {
+      "test": "batch 1 on empty table: 495 inserted, 0 updated",
+      "passed": true,
+      "detail": "(495, 0)"
+    },
+    {
+      "test": "S12 after batch 2: 945 orders, one row each",
+      "passed": true,
+      "detail": "(945, 945)"
+    },
+    {
+      "test": "final status mix matches local profile (late copies ignored)",
+      "passed": true,
+      "detail": "{'shipped': 89, 'cancelled': 107, 'paid': 39, 'delivered': 666, 'placed': 44}"
+    },
+    {
+      "test": "48 final orders have a derived currency",
+      "passed": true,
+      "detail": "48"
+    },
+    {
+      "test": "D1 batch 2 balance",
+      "passed": true,
+      "detail": "{'batch_id': 2, 'layer': 'silver', 'entity': 'orders', 'rule': '_TOTAL', 'rows_in': 1545, 'rows_out': 597, 'rows_quarantined': 0, 'rows_deduped': 948, 'rows_inserted': 450, 'rows_updated': 137, 'recorded_at': datetime.datetime(2026, 10, 6, 10, 24, 30, 477081)}"
+    },
+    {
+      "test": "batch 2: 450 new orders inserted",
+      "passed": true,
+      "detail": "450"
+    },
+    {
+      "test": "S10 re-run batch 2 (real data): 0 inserted, 0 updated",
+      "passed": true,
+      "detail": "(0, 0)"
+    },
+    {
+      "test": "S10 still 945 orders",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "real orders data has no quarantined rows",
+      "passed": true,
+      "detail": "0"
+    },
+    {
+      "test": "R1 preview: MERGE commits tagged per batch in history",
+      "passed": false,
+      "detail": "[(4, 'batch_id=2 step=silver.orders'), (3, 'batch_id=1 step=silver.orders')]"
+    }
+  ]
+}
