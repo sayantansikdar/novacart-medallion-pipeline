@@ -32,3 +32,6 @@ derby.log
 .DS_Store
 .vscode/
 .idea/
+
+# Per-person settings (subscription id, e-mail, local paths): never committed
+infra/local.env
