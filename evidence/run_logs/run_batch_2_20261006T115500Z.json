@@ -1,0 +1,504 @@
+{
+  "pipeline": "novacart_medallion",
+  "run_id": "0a7efe86-6ec7-4936-b695-f1bc8247b733",
+  "batch_id": "2",
+  "job": {
+    "id": "0a7efe86-6ec7-4936-b695-f1bc8247b733",
+    "itemId": "b040c72b-79c5-4d70-bf44-bd7a77bbdd33",
+    "jobType": "Pipeline",
+    "invokeType": "Manual",
+    "status": "Completed",
+    "failureReason": null,
+    "rootActivityId": "28640b2a-1787-47c3-93c3-8ffe5dc7779e",
+    "startTimeUtc": "2026-10-06T11:55:01.3171706",
+    "endTimeUtc": "2026-10-06T12:11:13.26"
+  },
+  "activity_runs": [
+    {
+      "pipelineId": "b040c72b-79c5-4d70-bf44-bd7a77bbdd33",
+      "pipelineRunId": "0a7efe86-6ec7-4936-b695-f1bc8247b733",
+      "activityName": "setup",
+      "activityType": "TridentNotebook",
+      "activityRunId": "7d395511-6c38-4997-b636-6a4ee90f69e7",
+      "status": "Succeeded",
+      "activityRunStart": "2026-10-06T11:55:08.5727889Z",
+      "activityRunEnd": "2026-10-06T11:55:58.7641422Z",
+      "durationInMs": 50191,
+      "input": {
+        "notebookId": "7b4d17fc-dd5d-4808-af0a-24db13c1c666",
+        "workspaceId": "bfb76aac-adf7-413d-9ca3-7d3f182f5960",
+        "parameters": {
+          "batch_id": {
+            "value": "2",
+            "type": "string"
+          }
+        }
+      },
+      "output": {
+        "status": "Succeeded",
+        "result": {
+          "runId": "7d395511-6c38-4997-b636-6a4ee90f69e7",
+          "runStatus": "Succeeded",
+          "sessionId": "0cbf845e-dee9-48ab-822c-72de225ee483",
+          "sparkPool": "bfb76aac-adf7-413d-9ca3-7d3f182f5960",
+          "error": null,
+          "lastCheckedOn": "2026-10-06T11:55:48.9Z",
+          "metadata": {
+            "isForPipeline": null,
+            "runStartTime": "2026-10-06T11:55:11.4705427Z",
+            "runEndTime": "2026-10-06T11:55:48.9035569Z"
+          },
+          "highConcurrencyModeStatus": null,
+          "exitValue": null
+        },
+        "message": "Notebook execution is in Succeeded state, runId: 7d395511-6c38-4997-b636-6a4ee90f69e7",
+        "SparkMonitoringURL": "workloads/de-ds/sparkmonitor/7b4d17fc-dd5d-4808-af0a-24db13c1c666/0cbf845e-dee9-48ab-822c-72de225ee483",
+        "sessionSource": "",
+        "sessionTag": "",
+        "effectiveIntegrationRuntime": "AutoResolveIntegrationRuntime (Central India)",
+        "executionDuration": 47,
+        "durationInQueue": {
+          "integrationRuntimeQueue": 1
+        },
+        "billingReference": {
+          "activityType": "ExternalActivity",
+          "billableDuration": [
+            {
+              "meterType": "AzureIR",
+              "duration": 0.016666666666666666,
+              "unit": "Hours"
+            }
+          ]
+        }
+      },
+      "iterationHash": "",
+      "userProperties": {},
+      "error": {
+        "errorCode": "",
+        "message": "",
+        "failureType": "",
+        "target": "setup",
+        "details": ""
+      },
+      "retryAttempt": null,
+      "recoveryStatus": "None",
+      "integrationRuntimeNames": [
+        "autoresolveintegrationruntime"
+      ],
+      "executionDetails": {
+        "integrationRuntime": [
+          {
+            "name": "AutoResolveIntegrationRuntime",
+            "type": "Managed",
+            "location": "Central India"
+          }
+        ]
+      }
+    },
+    {
+      "pipelineId": "b040c72b-79c5-4d70-bf44-bd7a77bbdd33",
+      "pipelineRunId": "0a7efe86-6ec7-4936-b695-f1bc8247b733",
+      "activityName": "bronze",
+      "activityType": "TridentNotebook",
+      "activityRunId": "c75e7ab2-5891-42bf-8a19-bdd006036e44",
+      "status": "Succeeded",
+      "activityRunStart": "2026-10-06T11:56:00.3249222Z",
+      "activityRunEnd": "2026-10-06T11:59:52.5787618Z",
+      "durationInMs": 232253,
+      "input": {
+        "notebookId": "7a58c1e8-bc3e-4eb5-8a13-4c990b0ac1a2",
+        "workspaceId": "bfb76aac-adf7-413d-9ca3-7d3f182f5960",
+        "parameters": {
+          "batch_id": {
+            "value": "2",
+            "type": "string"
+          }
+        }
+      },
+      "output": {
+        "status": "Succeeded",
+        "result": {
+          "runId": "c75e7ab2-5891-42bf-8a19-bdd006036e44",
+          "runStatus": "Succeeded",
+          "sessionId": "cc3a14fa-758e-44db-b0ef-275bd330597b",
+          "sparkPool": "bfb76aac-adf7-413d-9ca3-7d3f182f5960",
+          "error": null,
+          "lastCheckedOn": "2026-10-06T11:59:39.96Z",
+          "metadata": {
+            "isForPipeline": null,
+            "runStartTime": "2026-10-06T11:56:03.1116919Z",
+            "runEndTime": "2026-10-06T11:59:39.9623866Z"
+          },
+          "highConcurrencyModeStatus": null,
+          "exitValue": null
+        },
+        "message": "Notebook execution is in Succeeded state, runId: c75e7ab2-5891-42bf-8a19-bdd006036e44",
+        "SparkMonitoringURL": "workloads/de-ds/sparkmonitor/7a58c1e8-bc3e-4eb5-8a13-4c990b0ac1a2/cc3a14fa-758e-44db-b0ef-275bd330597b",
+        "sessionSource": "",
+        "sessionTag": "",
+        "effectiveIntegrationRuntime": "AutoResolveIntegrationRuntime (Central India)",
+        "executionDuration": 229,
+        "durationInQueue": {
+          "integrationRuntimeQueue": 0
+        },
+        "billingReference": {
+          "activityType": "ExternalActivity",
+          "billableDuration": [
+            {
+              "meterType": "AzureIR",
+              "duration": 0.06666666666666667,
+              "unit": "Hours"
+            }
+          ]
+        }
+      },
+      "iterationHash": "",
+      "userProperties": {},
+      "error": {
+        "errorCode": "",
+        "message": "",
+        "failureType": "",
+        "target": "bronze",
+        "details": ""
+      },
+      "retryAttempt": null,
+      "recoveryStatus": "None",
+      "integrationRuntimeNames": [
+        "autoresolveintegrationruntime"
+      ],
+      "executionDetails": {
+        "integrationRuntime": [
+          {
+            "name": "AutoResolveIntegrationRuntime",
+            "type": "Managed",
+            "location": "Central India"
+          }
+        ]
+      }
+    },
+    {
+      "pipelineId": "b040c72b-79c5-4d70-bf44-bd7a77bbdd33",
+      "pipelineRunId": "0a7efe86-6ec7-4936-b695-f1bc8247b733",
+      "activityName": "silver_reference",
+      "activityType": "TridentNotebook",
+      "activityRunId": "b745e80e-e374-4f0c-a04b-9ba595f6d1ee",
+      "status": "Succeeded",
+      "activityRunStart": "2026-10-06T11:59:54.0131347Z",
+      "activityRunEnd": "2026-10-06T12:02:30.0640417Z",
+      "durationInMs": 156050,
+      "input": {
+        "notebookId": "75c47a30-80f6-486e-89f6-188669fa1a9b",
+        "workspaceId": "bfb76aac-adf7-413d-9ca3-7d3f182f5960",
+        "parameters": {
+          "batch_id": {
+            "value": "2",
+            "type": "string"
+          }
+        }
+      },
+      "output": {
+        "status": "Succeeded",
+        "result": {
+          "runId": "b745e80e-e374-4f0c-a04b-9ba595f6d1ee",
+          "runStatus": "Succeeded",
+          "sessionId": "4b24f37c-b901-409a-a4e8-0dcdca2a30c6",
+          "sparkPool": "bfb76aac-adf7-413d-9ca3-7d3f182f5960",
+          "error": null,
+          "lastCheckedOn": "2026-10-06T12:02:27.9266667Z",
+          "metadata": {
+            "isForPipeline": null,
+            "runStartTime": "2026-10-06T11:59:56.6251997Z",
+            "runEndTime": "2026-10-06T12:02:24.3574602Z"
+          },
+          "highConcurrencyModeStatus": null,
+          "exitValue": null
+        },
+        "message": "Notebook execution is in Succeeded state, runId: b745e80e-e374-4f0c-a04b-9ba595f6d1ee",
+        "SparkMonitoringURL": "workloads/de-ds/sparkmonitor/75c47a30-80f6-486e-89f6-188669fa1a9b/4b24f37c-b901-409a-a4e8-0dcdca2a30c6",
+        "sessionSource": "",
+        "sessionTag": "",
+        "effectiveIntegrationRuntime": "AutoResolveIntegrationRuntime (Central India)",
+        "executionDuration": 153,
+        "durationInQueue": {
+          "integrationRuntimeQueue": 1
+        },
+        "billingReference": {
+          "activityType": "ExternalActivity",
+          "billableDuration": [
+            {
+              "meterType": "AzureIR",
+              "duration": 0.049999999999999996,
+              "unit": "Hours"
+            }
+          ]
+        }
+      },
+      "iterationHash": "",
+      "userProperties": {},
+      "error": {
+        "errorCode": "",
+        "message": "",
+        "failureType": "",
+        "target": "silver_reference",
+        "details": ""
+      },
+      "retryAttempt": null,
+      "recoveryStatus": "None",
+      "integrationRuntimeNames": [
+        "autoresolveintegrationruntime"
+      ],
+      "executionDetails": {
+        "integrationRuntime": [
+          {
+            "name": "AutoResolveIntegrationRuntime",
+            "type": "Managed",
+            "location": "Central India"
+          }
+        ]
+      }
+    },
+    {
+      "pipelineId": "b040c72b-79c5-4d70-bf44-bd7a77bbdd33",
+      "pipelineRunId": "0a7efe86-6ec7-4936-b695-f1bc8247b733",
+      "activityName": "silver_orders",
+      "activityType": "TridentNotebook",
+      "activityRunId": "9d3226d1-fa74-445b-b8a6-8053dc0981cc",
+      "status": "Succeeded",
+      "activityRunStart": "2026-10-06T12:02:33.4675769Z",
+      "activityRunEnd": "2026-10-06T12:05:09.9784998Z",
+      "durationInMs": 156510,
+      "input": {
+        "notebookId": "6e459945-823e-412e-9448-91149d133d71",
+        "workspaceId": "bfb76aac-adf7-413d-9ca3-7d3f182f5960",
+        "parameters": {
+          "batch_id": {
+            "value": "2",
+            "type": "string"
+          }
+        }
+      },
+      "output": {
+        "status": "Succeeded",
+        "result": {
+          "runId": "9d3226d1-fa74-445b-b8a6-8053dc0981cc",
+          "runStatus": "Succeeded",
+          "sessionId": "d0c6f9e8-22fb-4ed7-99df-ed053b8730e4",
+          "sparkPool": "bfb76aac-adf7-413d-9ca3-7d3f182f5960",
+          "error": null,
+          "lastCheckedOn": "2026-10-06T12:05:07.88Z",
+          "metadata": {
+            "isForPipeline": null,
+            "runStartTime": "2026-10-06T12:02:36.8855851Z",
+            "runEndTime": "2026-10-06T12:05:07.8816254Z"
+          },
+          "highConcurrencyModeStatus": null,
+          "exitValue": null
+        },
+        "message": "Notebook execution is in Succeeded state, runId: 9d3226d1-fa74-445b-b8a6-8053dc0981cc",
+        "SparkMonitoringURL": "workloads/de-ds/sparkmonitor/6e459945-823e-412e-9448-91149d133d71/d0c6f9e8-22fb-4ed7-99df-ed053b8730e4",
+        "sessionSource": "",
+        "sessionTag": "",
+        "effectiveIntegrationRuntime": "AutoResolveIntegrationRuntime (Central India)",
+        "executionDuration": 153,
+        "durationInQueue": {
+          "integrationRuntimeQueue": 1
+        },
+        "billingReference": {
+          "activityType": "ExternalActivity",
+          "billableDuration": [
+            {
+              "meterType": "AzureIR",
+              "duration": 0.049999999999999996,
+              "unit": "Hours"
+            }
+          ]
+        }
+      },
+      "iterationHash": "",
+      "userProperties": {},
+      "error": {
+        "errorCode": "",
+        "message": "",
+        "failureType": "",
+        "target": "silver_orders",
+        "details": ""
+      },
+      "retryAttempt": null,
+      "recoveryStatus": "None",
+      "integrationRuntimeNames": [
+        "autoresolveintegrationruntime"
+      ],
+      "executionDetails": {
+        "integrationRuntime": [
+          {
+            "name": "AutoResolveIntegrationRuntime",
+            "type": "Managed",
+            "location": "Central India"
+          }
+        ]
+      }
+    },
+    {
+      "pipelineId": "b040c72b-79c5-4d70-bf44-bd7a77bbdd33",
+      "pipelineRunId": "0a7efe86-6ec7-4936-b695-f1bc8247b733",
+      "activityName": "silver_items",
+      "activityType": "TridentNotebook",
+      "activityRunId": "cc7a0ab0-5507-4277-b1ec-7622c98d5778",
+      "status": "Succeeded",
+      "activityRunStart": "2026-10-06T12:05:12.2606354Z",
+      "activityRunEnd": "2026-10-06T12:07:33.2545733Z",
+      "durationInMs": 140993,
+      "input": {
+        "notebookId": "77b99e10-f8a2-49c8-8387-f15a44f64405",
+        "workspaceId": "bfb76aac-adf7-413d-9ca3-7d3f182f5960",
+        "parameters": {
+          "batch_id": {
+            "value": "2",
+            "type": "string"
+          }
+        }
+      },
+      "output": {
+        "status": "Succeeded",
+        "result": {
+          "runId": "cc7a0ab0-5507-4277-b1ec-7622c98d5778",
+          "runStatus": "Succeeded",
+          "sessionId": "c9e96bab-b2c1-4fe5-9dd3-026055d2ae41",
+          "sparkPool": "bfb76aac-adf7-413d-9ca3-7d3f182f5960",
+          "error": null,
+          "lastCheckedOn": "2026-10-06T12:07:31.3033333Z",
+          "metadata": {
+            "isForPipeline": null,
+            "runStartTime": "2026-10-06T12:05:14.9671683Z",
+            "runEndTime": "2026-10-06T12:07:31.3064405Z"
+          },
+          "highConcurrencyModeStatus": null,
+          "exitValue": null
+        },
+        "message": "Notebook execution is in Succeeded state, runId: cc7a0ab0-5507-4277-b1ec-7622c98d5778",
+        "SparkMonitoringURL": "workloads/de-ds/sparkmonitor/77b99e10-f8a2-49c8-8387-f15a44f64405/c9e96bab-b2c1-4fe5-9dd3-026055d2ae41",
+        "sessionSource": "",
+        "sessionTag": "",
+        "effectiveIntegrationRuntime": "AutoResolveIntegrationRuntime (Central India)",
+        "executionDuration": 138,
+        "durationInQueue": {
+          "integrationRuntimeQueue": 0
+        },
+        "billingReference": {
+          "activityType": "ExternalActivity",
+          "billableDuration": [
+            {
+              "meterType": "AzureIR",
+              "duration": 0.049999999999999996,
+              "unit": "Hours"
+            }
+          ]
+        }
+      },
+      "iterationHash": "",
+      "userProperties": {},
+      "error": {
+        "errorCode": "",
+        "message": "",
+        "failureType": "",
+        "target": "silver_items",
+        "details": ""
+      },
+      "retryAttempt": null,
+      "recoveryStatus": "None",
+      "integrationRuntimeNames": [
+        "autoresolveintegrationruntime"
+      ],
+      "executionDetails": {
+        "integrationRuntime": [
+          {
+            "name": "AutoResolveIntegrationRuntime",
+            "type": "Managed",
+            "location": "Central India"
+          }
+        ]
+      }
+    },
+    {
+      "pipelineId": "b040c72b-79c5-4d70-bf44-bd7a77bbdd33",
+      "pipelineRunId": "0a7efe86-6ec7-4936-b695-f1bc8247b733",
+      "activityName": "gold",
+      "activityType": "TridentNotebook",
+      "activityRunId": "75850d59-c7c2-44d7-b2c7-8eb6358cb6d0",
+      "status": "Succeeded",
+      "activityRunStart": "2026-10-06T12:07:34.9603323Z",
+      "activityRunEnd": "2026-10-06T12:11:10.4966541Z",
+      "durationInMs": 215536,
+      "input": {
+        "notebookId": "d34d8ca8-0787-45cc-80c3-4da9539bc001",
+        "workspaceId": "bfb76aac-adf7-413d-9ca3-7d3f182f5960",
+        "parameters": {
+          "batch_id": {
+            "value": "2",
+            "type": "string"
+          }
+        }
+      },
+      "output": {
+        "status": "Succeeded",
+        "result": {
+          "runId": "75850d59-c7c2-44d7-b2c7-8eb6358cb6d0",
+          "runStatus": "Succeeded",
+          "sessionId": "2429d448-da0b-4190-8409-d62764544535",
+          "sparkPool": "bfb76aac-adf7-413d-9ca3-7d3f182f5960",
+          "error": null,
+          "lastCheckedOn": "2026-10-06T12:11:08.3366667Z",
+          "metadata": {
+            "isForPipeline": null,
+            "runStartTime": "2026-10-06T12:07:37.5933377Z",
+            "runEndTime": "2026-10-06T12:10:58.4427831Z"
+          },
+          "highConcurrencyModeStatus": null,
+          "exitValue": null
+        },
+        "message": "Notebook execution is in Succeeded state, runId: 75850d59-c7c2-44d7-b2c7-8eb6358cb6d0",
+        "SparkMonitoringURL": "workloads/de-ds/sparkmonitor/d34d8ca8-0787-45cc-80c3-4da9539bc001/2429d448-da0b-4190-8409-d62764544535",
+        "sessionSource": "",
+        "sessionTag": "",
+        "effectiveIntegrationRuntime": "AutoResolveIntegrationRuntime (Central India)",
+        "executionDuration": 213,
+        "durationInQueue": {
+          "integrationRuntimeQueue": 0
+        },
+        "billingReference": {
+          "activityType": "ExternalActivity",
+          "billableDuration": [
+            {
+              "meterType": "AzureIR",
+              "duration": 0.06666666666666667,
+              "unit": "Hours"
+            }
+          ]
+        }
+      },
+      "iterationHash": "",
+      "userProperties": {},
+      "error": {
+        "errorCode": "",
+        "message": "",
+        "failureType": "",
+        "target": "gold",
+        "details": ""
+      },
+      "retryAttempt": null,
+      "recoveryStatus": "None",
+      "integrationRuntimeNames": [
+        "autoresolveintegrationruntime"
+      ],
+      "executionDetails": {
+        "integrationRuntime": [
+          {
+            "name": "AutoResolveIntegrationRuntime",
+            "type": "Managed",
+            "location": "Central India"
+          }
+        ]
+      }
+    }
+  ]
+}
