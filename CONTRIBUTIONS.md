@@ -16,7 +16,7 @@ whose layer design, business rules and assumptions this implementation follows; 
 
 ## [@sayantansikdar](https://github.com/sayantansikdar)
 
-Led the implementation in this repository: directed the AI-assisted build, made the decisions below, and reviewed
+Led the implementation in this repository: directed the build, made the decisions below, and reviewed
 each module's test results before the next one started.
 
 **Prompt engineering and working protocol** — [`docs/prompts/master_build_prompt.md`](docs/prompts/master_build_prompt.md)
@@ -47,10 +47,3 @@ each module's test results before the next one started.
 Contribution details for [@Harshita-Basera](https://github.com/Harshita-Basera),
 [@kritika240624](https://github.com/kritika240624), [@Pari219](https://github.com/Pari219) and
 [@RohanS00007](https://github.com/RohanS00007) are to be added by each member.
-
-## AI assistance
-
-Code, tests and documents in this repository were generated with an AI coding assistant (Claude, Anthropic) under the
-team's direction, as the lab's ground rules require us to disclose. What was generated, how it was validated and which
-decisions were human is listed per module in
-[`SUBMISSION.md`](SUBMISSION.md#ai-assistance-disclosure-lab-ground-rule).

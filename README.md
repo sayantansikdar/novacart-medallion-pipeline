@@ -31,7 +31,7 @@ Team **Bug Byts**: [@sayantansikdar](https://github.com/sayantansikdar) · [@Har
 10. [Security and cost](#10-security-and-cost)
 11. [Assumptions](#11-assumptions)
 12. [Lessons learned](#12-lessons-learned)
-13. [Team, contributions and AI assistance](#13-team-contributions-and-ai-assistance)
+13. [Team and contributions](#13-team-and-contributions)
 
 ---
 
@@ -291,12 +291,8 @@ These are where the spec was unclear; the [design note](docs/NovaCart_Design_Not
 - **An independent reference calculation** caught nothing wrong, and that's the point: it's what makes "the numbers
   are right" a demonstrated fact rather than a claim.
 
-## 13. Team, contributions and AI assistance
+## 13. Team and contributions
 
-Team **Bug Byts**: [@sayantansikdar](https://github.com/sayantansikdar) · [@Harshita-Basera](https://github.com/Harshita-Basera) · [@kritika240624](https://github.com/kritika240624) · [@Pari219](https://github.com/Pari219) · [@RohanS00007](https://github.com/RohanS00007). Individual contributions: [CONTRIBUTIONS.md](CONTRIBUTIONS.md).
+Team **Bug Byts**: [@sayantansikdar](https://github.com/sayantansikdar) · [@Harshita-Basera](https://github.com/Harshita-Basera) · [@kritika240624](https://github.com/kritika240624) · [@Pari219](https://github.com/Pari219) · [@RohanS00007](https://github.com/RohanS00007).
 
-
-The code, tests and documents were generated with **Claude (Anthropic)**, through Claude Code, under the team's
-direction. Every module was reviewed and verified by real test runs before the next one started.
-[SUBMISSION.md](SUBMISSION.md#ai-assistance-disclosure-lab-ground-rule) lists, per module, what was generated, how it
-was validated and which decisions were human.
+Individual contributions are in [CONTRIBUTIONS.md](CONTRIBUTIONS.md). The AI-use disclosure the lab requires is in [SUBMISSION.md](SUBMISSION.md#ai-assistance-disclosure-lab-ground-rule).
