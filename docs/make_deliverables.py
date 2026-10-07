@@ -254,7 +254,7 @@ def footer(c, doc):
     c.saveState()
     c.setFont("Uni", 6.5)
     c.setFillColor(MUTED)
-    c.drawString(12 * mm, 6 * mm, "NovaCart deliverables · Bug Byts · generated from Fabric exports with AI assistance (Claude)")
+    c.drawString(12 * mm, 6 * mm, "NovaCart deliverables · Bug Byts · Sayantan Sikdar · generated from Fabric exports, built with an AI coding assistant")
     c.drawRightString(A4[0] - 12 * mm, 6 * mm, f"page {doc.page}")
     c.restoreState()
 

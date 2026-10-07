@@ -51,24 +51,27 @@ Not exercised by the real data, so covered with generated test data: malformed J
 
 ## AI-assistance disclosure (lab ground rule)
 
-An AI assistant (**Claude, Anthropic**, used through Claude Code) was used throughout. Per module:
+I ([@sayantansikdar](https://github.com/sayantansikdar)) built this with an AI coding assistant. I defined the
+working protocol and the 52-case test matrix, made the platform and design decisions, and reviewed and verified
+every module through real test runs before moving on. The assistant drafted code, tests and documents to that plan.
+Per module:
 
-| Module | What the AI generated | How it was validated | Human decisions |
+| Module | Drafted with the AI assistant | How I validated it | My decisions |
 |---|---|---|---|
-| 0 Discovery | Data-profiling scripts, discovery questions, platform comparison | Profiling run on the real files; numbers reused as test expectations | Platform choice (Fabric), names, public repo, capacity use |
+| 0 Discovery | Data-profiling scripts, discovery questions, platform comparison | Ran the profiling on the real files; reused its numbers as test expectations | Platform choice (Fabric), names, public repo, capacity use |
 | 1 Foundation | `setup/01_create_lakehouses.sh`, notebook runner, input check | Idempotent re-run; SHA-256 comparison; row counts in Spark | Reuse of the team workspace and existing uploads |
-| 2 Config + setup | `00_config`, `00_setup`, tests | Test notebook (timestamps, currency, constraints, idempotency) | — |
+| 2 Config + setup | `00_config`, `00_setup`, tests | Test notebook (timestamps, currency, constraints, idempotency): 45/45 | — |
 | 3 Bronze | `01_bronze`, raw reader, tests | B1–B6 with independent counts | — |
-| 4 Silver orders | `lib_silver` (orders), `02_silver_orders`, tests | Generated edge cases + real status mix equal to the profile | Tie rule (later batch wins only if different) |
+| 4 Silver orders | `lib_silver` (orders), `02_silver_orders`, tests | Generated edge cases; real status mix equal to the profile | Tie rule (later batch wins only if different) |
 | 5 Items / SCD2 / reference | `lib_silver` (rest), `03`, `04`, tests | 38 tests incl. SCD2 integrity and re-run | Keep unknown-order payments in silver |
 | 6 Gold | `lib_gold`, `05_gold`, plain-Python reference, tests | Gold totals equal the independent Python calculation to the cent | Payment-mismatch expected amount (0 unless paid/shipped/delivered) |
 | 7 Pipeline | Pipeline definition, deploy/run tool, alert notebook, reset + verification | Deliberate failure run; official runs; time-travel verification | Reset before official runs; recorded alert instead of e-mail |
 | 8 Evidence | `06_evidence`, evidence write-up | 11 automatic checks on the official tables | — |
 | 9 Submission | Design note, cheatsheet, deliverables PDF generators, this file | Every number in them comes from the saved run outputs | Final wording of the design note |
 
-Every line was reviewed and can be explained; where the AI's first version was wrong (e.g. Fabric child-notebook lakehouse rule,
-`fs.head` 100 KB limit, `try_to_date` missing in Spark 3.5, `count()` answered from Delta statistics), the failing test caught it
-and the fix is visible in the git history.
+I reviewed every line and can explain it. Where a first draft was wrong (the Fabric child-notebook lakehouse rule,
+the `fs.head` 100 KB limit, `try_to_date` missing in Spark 3.5, `count()` answered from Delta statistics), a failing
+test caught it and the fix is in the git history.
 
 ## Teardown
 

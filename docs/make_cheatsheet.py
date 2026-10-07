@@ -245,7 +245,7 @@ def footer(canvas, doc_):
     canvas.saveState()
     canvas.setFont("Uni", 6.5)
     canvas.setFillColor(MUTED)
-    canvas.drawString(12 * mm, 5 * mm, "NovaCart medallion pipeline · Bug Byts · prepared with AI assistance (Claude); every result above comes from a real test run")
+    canvas.drawString(12 * mm, 5 * mm, "NovaCart medallion pipeline · Bug Byts · Sayantan Sikdar · built with an AI coding assistant; every result above comes from a real test run")
     canvas.drawRightString(A4[0] - 12 * mm, 5 * mm, f"page {doc_.page} of 2")
     canvas.restoreState()
 

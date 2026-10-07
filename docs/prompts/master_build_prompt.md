@@ -5,7 +5,7 @@ repository: kickoff, house rules, the module plan and the test matrix every modu
 the original Azure Databricks design; the platform later moved to Microsoft Fabric (see the design note), while the
 working protocol, module structure and test matrix were kept.*
 
-> Paste **Section A** into a fresh agent session (Claude Code, Cursor, or a chat window) to start.
+> Paste **Section A** into a fresh agent session (a coding agent or a chat window) to start.
 > Then run the modules in order using **Section C**. Section B is the house rules the agent must follow throughout.
 
 ---
