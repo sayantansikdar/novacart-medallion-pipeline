@@ -1,9 +1,23 @@
 # Contributions
 
-## Sayantan Sikdar ([@sayantansikdar](https://github.com/sayantansikdar)) — Team Bug Byts
+## Team Bug Byts
+
+| GitHub | Name |
+|---|---|
+| [@sayantansikdar](https://github.com/sayantansikdar) | Sayantan Sikdar |
+| [@Harshita-Basera](https://github.com/Harshita-Basera) | |
+| [@kritika240624](https://github.com/kritika240624) | |
+| [@Pari219](https://github.com/Pari219) | |
+| [@RohanS00007](https://github.com/RohanS00007) | Rohan Singh |
+
+The team wrote the original design note ("NovaCart – Medallion Pipeline Design Note", Azure Databricks + Delta Lake),
+whose layer design, business rules and assumptions this implementation follows; the Fabric version is
+[`docs/NovaCart_Design_Note.pdf`](docs/NovaCart_Design_Note.pdf).
+
+## [@sayantansikdar](https://github.com/sayantansikdar)
 
 Led the implementation in this repository: directed the AI-assisted build, made the decisions below, and reviewed
-each module's test results before the next one started (author of every commit in this repository).
+each module's test results before the next one started.
 
 **Prompt engineering and working protocol** — [`docs/prompts/master_build_prompt.md`](docs/prompts/master_build_prompt.md)
 - Wrote the master build prompt: a 10-module plan (discovery → teardown), house rules (credential protocol, a single
@@ -24,18 +38,19 @@ each module's test results before the next one started (author of every commit i
   alert instead of an e-mail; a public repository.
 
 **Validation and delivery**
-- Reviewed every module's results (Modules 1–8: all tests passing on real Fabric runs) and the deliverables: pipeline
-  export and monitored runs, DQ report, Part 5/6 evidence, design note, cheatsheet.
+- Reviewed every module's results (224 automated tests, see [TEST_RESULTS.md](TEST_RESULTS.md)) and the deliverables:
+  pipeline export and monitored runs, DQ report, Part 5/6 evidence, design note, cheatsheet.
 - Fabric portal monitoring and run screenshots; viva preparation.
 
-## Team Bug Byts
+## Other members
 
-- Original design note ("NovaCart – Medallion Pipeline Design Note", Azure Databricks + Delta Lake), whose layer
-  design, business rules and assumptions this implementation follows; the Fabric version is
-  [`docs/NovaCart_Design_Note.pdf`](docs/NovaCart_Design_Note.pdf).
+Contribution details for [@Harshita-Basera](https://github.com/Harshita-Basera),
+[@kritika240624](https://github.com/kritika240624), [@Pari219](https://github.com/Pari219) and
+[@RohanS00007](https://github.com/RohanS00007) are to be added by each member.
 
 ## AI assistance
 
-Code, tests and documents were generated with **Claude (Anthropic)** via Claude Code under the direction above; what was
-generated, how it was validated and which decisions were human is listed per module in
+Code, tests and documents in this repository were generated with an AI coding assistant (Claude, Anthropic) under the
+team's direction, as the lab's ground rules require us to disclose. What was generated, how it was validated and which
+decisions were human is listed per module in
 [`SUBMISSION.md`](SUBMISSION.md#ai-assistance-disclosure-lab-ground-rule).

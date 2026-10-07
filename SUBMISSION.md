@@ -1,4 +1,6 @@
-# NovaCart Order Analytics: submission pack (Team Bug Byts)
+# NovaCart Order Analytics: submission pack
+
+Team **Bug Byts**: [@sayantansikdar](https://github.com/sayantansikdar) · [@Harshita-Basera](https://github.com/Harshita-Basera) · [@kritika240624](https://github.com/kritika240624) · [@Pari219](https://github.com/Pari219) · [@RohanS00007](https://github.com/RohanS00007)
 
 Platform: **Microsoft Fabric** (OneLake lakehouses + Delta Lake + Fabric Spark + Data Pipelines), workspace `NovaCart_HCL`,
 capacity `hackafabric` (F2, Central India). Raw inputs: `LH_NovaCart_Bronze/Files/NovaCart_SourceData/NovaCart_SourceData/`
