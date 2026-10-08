@@ -15,6 +15,24 @@ Team **Bug Byts**: [@sayantansikdar](https://github.com/sayantansikdar) · [@Har
 | **Tests** | [TEST_RESULTS.md](TEST_RESULTS.md): all 224 tests with their actual output and what each one shows |
 | **Submission** | [SUBMISSION.md](SUBMISSION.md) (checklist, test results, AI-use disclosure) · [CONTRIBUTIONS.md](CONTRIBUTIONS.md) |
 
+## Project at a glance
+
+> Unified conflicting revenue reports by building a Microsoft Fabric medallion pipeline that processed 2,963 order
+> versions into 945 orders, rejected 10 late updates, and reconciled $295,586 revenue across 224 tests.
+
+| Metric | Value | What it means |
+|---|---|---|
+| Sources → layers | **8 files → 3 layers** | Raw files flow through bronze, silver and gold |
+| Order versions → orders | **2,963 → 945** | 1,418 + 1,545 rows consolidated to one current row per order |
+| Late updates rejected | **10** | Older "paid" copies of cancelled orders never overwrote newer data |
+| Records quarantined | **23** | 18 order lines with no matching order + 5 CRM rows without `updated_at` |
+| Order lines / customer versions | **1,933 / 166** | Fact rows in gold; SCD Type 2 history for 130 customers |
+| Revenue | **$295,585.57** | Matches an independent plain-Python calculation to the cent |
+| Re-run of a batch | **0 changes** | 0 inserted, 0 updated, no new table version |
+| File compaction | **13 → 1** | OPTIMIZE on the fact table, identical data |
+| Automated tests | **224** | Across 8 modules; details in [TEST_RESULTS.md](TEST_RESULTS.md) |
+| Compute cost | **≈ $2–3** | F2 capacity resumed only while running |
+
 ---
 
 ## Contents
